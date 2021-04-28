@@ -80,10 +80,6 @@ class Results extends React.Component {
                 <Header />
                 <h1 className={classes.mainWords} style = {{marginTop: "15%"}}>Zoom is your best option</h1>
                 <br></br>
-                {/* <div style={{textAlign: "center"}}><Button variant="contained" onClick={this.handleHide} className={classes.whyButton}>
-                    why?
-                </Button></div> */}
-                
                 
                 {this.state.isActive ?(
                     <div style={{textAlign: "center"}}><Button variant="contained" onClick={this.handleHide} className={classes.whyButton}>
