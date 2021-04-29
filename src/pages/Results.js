@@ -22,6 +22,7 @@ const useStyles = makeStyles(() => ({
         height: "99.8%",
         // display: "inline-block",
         // marginTop: 100,
+        scrollbarColor: "blue",
     },
 }));
 
@@ -50,10 +51,10 @@ function ResultsTable() {
     const { container, content_container } = useStyles();
     return(
         <div className={container}>
-            <div className={content_container} style={{ float: "left", width: "40%" }}>
+            <div className={content_container} style={{ float: "left", width: "40%", overflowY: "scroll"}}>
                 <QuestionBoxes />
             </div>
-            <div className={content_container} style={{float: "right", width: "59.5%" }}>
+            <div className={content_container} style={{ float: "right", width: "59.5%" }}>
                 <DataTable />
             </div>
         </div>

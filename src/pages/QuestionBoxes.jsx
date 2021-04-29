@@ -210,7 +210,7 @@ function QuestionBoxes() {
                     <FormGroup>
                         <FormControlLabel
                             control={<Checkbox checked={passo} onChange={handleChange} name="passo" style={{ color: "white" }} />}
-                            label={<Typography className={answerWords}>passive/observatiion only</Typography>}
+                            label={<Typography className={answerWords}>passive/observation only</Typography>}
                         />
                         <FormControlLabel
                             control={<Checkbox checked={passc} onChange={handleChange} name="passc" style={{ color: "white" }} />}

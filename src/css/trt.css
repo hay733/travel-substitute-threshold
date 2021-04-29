@@ -9,3 +9,8 @@ body {
 	/* color: #545F66; */
 }
 
+	body::-webkit-scrollbar { 
+		width: 0px;               /* width of the entire scrollbar */
+	}
+
+
