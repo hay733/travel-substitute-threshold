@@ -66,6 +66,10 @@ function QuestionBoxes() {
         strang: false, aquaint: false, friend: false, cfriend: false, fam: false,
         inter: false, vr: false, ar: false, other: false, none: false,
         passo: false, passc: false, part: false,
+        vdiff: false, diff: false, mdiff: false, meas: false, eas: false, veas: false,
+        rvdiff: false, rdiff: false, rmdiff: false, rmeas: false, reas: false, rveas: false,
+        zero: false, two: false, four: false, seven: false,
+        nreal: false, sreal: false, vreal: false, notARVR: false,
     });
     
     const handleChange = (event) => {
@@ -77,6 +81,12 @@ function QuestionBoxes() {
         strang, aquaint, friend, cfriend, fam, // how well knwo other
         inter, vr, ar, other, none, // what access needed
         passo, passc, part, // degree of part
+        vdiff, diff, mdiff, meas, eas, veas, // difficulty of tasks
+        rvdiff, rdiff, rmdiff, rmeas, reas, rveas, // diff remembering
+        zero, two, four, seven, // num prev meetings
+        nreal, sreal, vreal, notARVR, // realistic avatars
+        // cameras
+        // how interacting
     } = state;
 
     return(
@@ -197,6 +207,170 @@ function QuestionBoxes() {
                         <FormControlLabel
                             control={<Checkbox checked={none} onChange={handleChange} name="none" style={{ color: "white" }} />}
                             label={<Typography className={answerWords}>none</Typography>}
+                        />
+                    </FormGroup>
+                    <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
+                </FormControl>
+            </div>
+            {/* degree of participation */}
+            <div className={classes.root}>
+                <FormControl component="fieldset" className={classes.formControl}>
+                    <FormLabel className={questionWords} component="legend">What degree of interaction is needed?</FormLabel>
+                    <br></br>
+                    <FormGroup>
+                        <FormControlLabel
+                            control={<Checkbox checked={passo} onChange={handleChange} name="passo" style={{ color: "white" }} />}
+                            label={<Typography className={answerWords}>passive/observation only</Typography>}
+                        />
+                        <FormControlLabel
+                            control={<Checkbox checked={passc} onChange={handleChange} name="passc" style={{ color: "white" }} />}
+                            label={<Typography className={answerWords}>passive comments</Typography>}
+                        />
+                        <FormControlLabel
+                            control={<Checkbox checked={part} onChange={handleChange} name="part" style={{ color: "white" }} />}
+                            label={<Typography className={answerWords}>participation</Typography>}
+                        />
+                    </FormGroup>
+                    <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
+                </FormControl>
+            </div>
+            {/* difficulty of tasks */}
+            <div className={classes.root}>
+                <FormControl component="fieldset" className={classes.formControl}>
+                    <FormLabel className={questionWords} component="legend">How difficult is are the tasks to be done in the meeting?</FormLabel>
+                    <br></br>
+                    <FormGroup>
+                        <FormControlLabel
+                            control={<Checkbox checked={vdiff} onChange={handleChange} name="vdiff" style={{ color: "white" }} />}
+                            label={<Typography className={answerWords}>very difficult</Typography>}
+                        />
+                        <FormControlLabel
+                            control={<Checkbox checked={diff} onChange={handleChange} name="diff" style={{ color: "white" }} />}
+                            label={<Typography className={answerWords}>difficult</Typography>}
+                        />
+                        <FormControlLabel
+                            control={<Checkbox checked={mdiff} onChange={handleChange} name="mdiff" style={{ color: "white" }} />}
+                            label={<Typography className={answerWords}>moderately difficult</Typography>}
+                        />
+                        <FormControlLabel
+                            control={<Checkbox checked={meas} onChange={handleChange} name="meas" style={{ color: "white" }} />}
+                            label={<Typography className={answerWords}>moderately easy </Typography>}
+                        />
+                        <FormControlLabel
+                            control={<Checkbox checked={eas} onChange={handleChange} name="eas" style={{ color: "white" }} />}
+                            label={<Typography className={answerWords}>easy</Typography>}
+                        />
+                        <FormControlLabel
+                            control={<Checkbox checked={veas} onChange={handleChange} name="veas" style={{ color: "white" }} />}
+                            label={<Typography className={answerWords}>very easy </Typography>}
+                        />
+                    </FormGroup>
+                    <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
+                </FormControl>
+            </div>
+            {/* difficulty of remembering */}
+            <div className={classes.root}>
+                <FormControl component="fieldset" className={classes.formControl}>
+                    <FormLabel className={questionWords} component="legend">How difficult will it be to remember the content of the meeting?</FormLabel>
+                    <br></br>
+                    <FormGroup>
+                        <FormControlLabel
+                            control={<Checkbox checked={rvdiff} onChange={handleChange} name="rvdiff" style={{ color: "white" }} />}
+                            label={<Typography className={answerWords}>very difficult</Typography>}
+                        />
+                        <FormControlLabel
+                            control={<Checkbox checked={rdiff} onChange={handleChange} name="rdiff" style={{ color: "white" }} />}
+                            label={<Typography className={answerWords}>difficult</Typography>}
+                        />
+                        <FormControlLabel
+                            control={<Checkbox checked={rmdiff} onChange={handleChange} name="rmdiff" style={{ color: "white" }} />}
+                            label={<Typography className={answerWords}>moderately difficult</Typography>}
+                        />
+                        <FormControlLabel
+                            control={<Checkbox checked={rmeas} onChange={handleChange} name="rmeas" style={{ color: "white" }} />}
+                            label={<Typography className={answerWords}>moderately easy </Typography>}
+                        />
+                        <FormControlLabel
+                            control={<Checkbox checked={reas} onChange={handleChange} name="reas" style={{ color: "white" }} />}
+                            label={<Typography className={answerWords}>easy</Typography>}
+                        />
+                        <FormControlLabel
+                            control={<Checkbox checked={rveas} onChange={handleChange} name="rveas" style={{ color: "white" }} />}
+                            label={<Typography className={answerWords}>very easy </Typography>}
+                        />
+                    </FormGroup>
+                    <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
+                </FormControl>
+            </div>
+            {/* prev num meetings */}
+            <div className={classes.root}>
+                <FormControl component="fieldset" className={classes.formControl}>
+                    <FormLabel className={questionWords} component="legend">How many previous meetings have you had with this person?</FormLabel>
+                    <br></br>
+                    <FormGroup>
+                        <FormControlLabel
+                            control={<Checkbox checked={zero} onChange={handleChange} name="zero" style={{ color: "white" }} />}
+                            label={<Typography className={answerWords}>0-1</Typography>}
+                        />
+                        <FormControlLabel
+                            control={<Checkbox checked={two} onChange={handleChange} name="two" style={{ color: "white" }} />}
+                            label={<Typography className={answerWords}>2-3</Typography>}
+                        />
+                        <FormControlLabel
+                            control={<Checkbox checked={four} onChange={handleChange} name="four" style={{ color: "white" }} />}
+                            label={<Typography className={answerWords}>4-6</Typography>}
+                        />
+                        <FormControlLabel
+                            control={<Checkbox checked={seven} onChange={handleChange} name="seven" style={{ color: "white" }} />}
+                            label={<Typography className={answerWords}>7+</Typography>}
+                        />
+                    </FormGroup>
+                    <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
+                </FormControl>
+            </div>
+            {/* realistic avatars */}
+            <div className={classes.root}>
+                <FormControl component="fieldset" className={classes.formControl}>
+                    <FormLabel className={questionWords} component="legend">If using VR or AR, how realistic to people are the avatars? </FormLabel>
+                    <br></br>
+                    <FormGroup>
+                        <FormControlLabel
+                            control={<Checkbox checked={nreal} onChange={handleChange} name="nreal" style={{ color: "white" }} />}
+                            label={<Typography className={answerWords}>not realistic</Typography>}
+                        />
+                        <FormControlLabel
+                            control={<Checkbox checked={sreal} onChange={handleChange} name="sreal" style={{ color: "white" }} />}
+                            label={<Typography className={answerWords}>somewhat realistic</Typography>}
+                        />
+                        <FormControlLabel
+                            control={<Checkbox checked={vreal} onChange={handleChange} name="vreal" style={{ color: "white" }} />}
+                            label={<Typography className={answerWords}>very realistic</Typography>}
+                        />
+                        <FormControlLabel
+                            control={<Checkbox checked={notARVR} onChange={handleChange} name="notARVR" style={{ color: "white" }} />}
+                            label={<Typography className={answerWords}>not using VR/AR</Typography>}
+                        />
+                    </FormGroup>
+                    <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
+                </FormControl>
+            </div>
+            {/* degree of participation */}
+            <div className={classes.root}>
+                <FormControl component="fieldset" className={classes.formControl}>
+                    <FormLabel className={questionWords} component="legend">What degree of interaction is needed?</FormLabel>
+                    <br></br>
+                    <FormGroup>
+                        <FormControlLabel
+                            control={<Checkbox checked={passo} onChange={handleChange} name="passo" style={{ color: "white" }} />}
+                            label={<Typography className={answerWords}>passive/observation only</Typography>}
+                        />
+                        <FormControlLabel
+                            control={<Checkbox checked={passc} onChange={handleChange} name="passc" style={{ color: "white" }} />}
+                            label={<Typography className={answerWords}>passive comments</Typography>}
+                        />
+                        <FormControlLabel
+                            control={<Checkbox checked={part} onChange={handleChange} name="part" style={{ color: "white" }} />}
+                            label={<Typography className={answerWords}>participation</Typography>}
                         />
                     </FormGroup>
                     <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>

@@ -1,10 +1,11 @@
 import React from 'react'
-import { makeStyles, Button } from "@material-ui/core"
+import { withStyles, Button } from "@material-ui/core"
 
 import Header from './Header'
 import QuestionBoxes from './QuestionBoxes'
+import { render } from '@testing-library/react';
 
-const useStyles = makeStyles(() => ({
+const styles = theme => ({
     submitButton: {
       fontFamily: "Open Sans, sans-serif",
       fontWeight: 700,
@@ -24,27 +25,34 @@ const useStyles = makeStyles(() => ({
         display: "fixed",
         // alignItems: "center",
     },
-}));
+});
 
-function Questions() {
-    const { container, submitButton } = useStyles();
-    
-    return (
-        <div>
-            <Header />
-            <body className={container} style={{ fontFamily: "Open Sans, sans-serif"  }}>
-                <br></br><br></br>
-                <QuestionBoxes />
-                <br></br><br></br>
-                <div style={{textAlign: 'center'}}>
-                    <Button variant="contained" /*color="primary"*/ className={submitButton} href="/results">
-                        Submit
-                    </Button>
-                </div>
-                <br></br><br></br><br></br><br></br>
-            </body>
-        </div>
-    );
+class Questions extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+        };
+    }
+
+    render() {
+        const { classes } = this.props;
+        return (
+            <div>
+                <Header />
+                <body className={classes.container} style={{ fontFamily: "Open Sans, sans-serif"  }}>
+                    <br></br><br></br>
+                    <QuestionBoxes />
+                    <br></br><br></br>
+                    <div style={{textAlign: 'center'}}>
+                        <Button variant="contained" /*color="primary"*/ className={classes.submitButton} href="/results">
+                            Submit
+                        </Button>
+                    </div>
+                    <br></br><br></br><br></br><br></br>
+                </body>
+            </div>
+        );
+    }
 }
 
-export default Questions;
+export default withStyles(styles)(Questions);
