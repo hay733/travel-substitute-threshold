@@ -79,19 +79,23 @@ class Results extends React.Component {
         return (
             <div>
                 <Header />
-                <h1 className={classes.mainWords} style = {{marginTop: "15%"}}>Zoom is your best option</h1>
+                <h1 className={classes.mainWords} style = {{marginTop: "15%"}}>A teleconferencing software is your best option</h1>
                 <br></br>
                 
                 {this.state.isActive ?(
                     <div style={{textAlign: "center"}}><Button variant="contained" onClick={this.handleHide} className={classes.whyButton}>
-                        why?
+                        hide data
                     </Button></div>
                 ) : (
                     <div style={{textAlign: "center"}}><Button variant="contained" onClick={this.handleShow} className={classes.whyButton}>
-                        why?
+                        data
                     </Button></div>
                 )}
                 {this.state.isActive && <ResultsTable />}
+                <br></br><br></br><br></br>
+                <div style={{textAlign: "center", marginBottom: "5%"}}><a href='/about' classname={classes.mainWords} style={{color: "black", fontSize: 20, fontFamily: "Open Sans, sans-serif"}}>
+                    more info
+                </a></div>
             </div>
         );
     }

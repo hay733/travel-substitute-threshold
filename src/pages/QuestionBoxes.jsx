@@ -57,6 +57,11 @@ const themeStyles = makeStyles((theme) => ({
     }
 }));
 
+// function SetData(questions, ){
+//     if (questions.state.share) 
+//     return null;
+// }
+
 function QuestionBoxes() {
     const { questionWords, answerWords, warningWords } = useStyles();
     const classes = themeStyles();
@@ -70,6 +75,8 @@ function QuestionBoxes() {
         rvdiff: false, rdiff: false, rmdiff: false, rmeas: false, reas: false, rveas: false,
         zero: false, two: false, four: false, seven: false,
         nreal: false, sreal: false, vreal: false, notARVR: false,
+        ncam: false, nrcam: false, rcam: false, nottel: false,
+        speak: false, lcomms: false, eapub: false, mienv: false, noint: false,
     });
     
     const handleChange = (event) => {
@@ -85,8 +92,8 @@ function QuestionBoxes() {
         rvdiff, rdiff, rmdiff, rmeas, reas, rveas, // diff remembering
         zero, two, four, seven, // num prev meetings
         nreal, sreal, vreal, notARVR, // realistic avatars
-        // cameras
-        // how interacting
+        ncam, nrcam, rcam, nottel, // cameras
+        speak, lcomms, eapub, mienv, noint, // how interacting
     } = state;
 
     return(
@@ -354,45 +361,57 @@ function QuestionBoxes() {
                     <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
                 </FormControl>
             </div>
-            {/* degree of participation */}
+            {/* how cameras used */}
             <div className={classes.root}>
                 <FormControl component="fieldset" className={classes.formControl}>
-                    <FormLabel className={questionWords} component="legend">What degree of interaction is needed?</FormLabel>
+                    <FormLabel className={questionWords} component="legend">How will cameras be used if online?</FormLabel>
                     <br></br>
                     <FormGroup>
                         <FormControlLabel
-                            control={<Checkbox checked={passo} onChange={handleChange} name="passo" style={{ color: "white" }} />}
-                            label={<Typography className={answerWords}>passive/observation only</Typography>}
+                            control={<Checkbox checked={ncam} onChange={handleChange} name="ncam" style={{ color: "white" }} />}
+                            label={<Typography className={answerWords}>cameras will not be used</Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={passc} onChange={handleChange} name="passc" style={{ color: "white" }} />}
-                            label={<Typography className={answerWords}>passive comments</Typography>}
+                            control={<Checkbox checked={nrcam} onChange={handleChange} name="nrcam" style={{ color: "white" }} />}
+                            label={<Typography className={answerWords}>cameras will not be required but may not be used</Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={part} onChange={handleChange} name="part" style={{ color: "white" }} />}
-                            label={<Typography className={answerWords}>participation</Typography>}
+                            control={<Checkbox checked={rcam} onChange={handleChange} name="rcam" style={{ color: "white" }} />}
+                            label={<Typography className={answerWords}>cameras are required</Typography>}
+                        />
+                        <FormControlLabel
+                            control={<Checkbox checked={nottel} onChange={handleChange} name="nottel" style={{ color: "white" }} />}
+                            label={<Typography className={answerWords}>not using teleconferencing</Typography>}
                         />
                     </FormGroup>
                     <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
                 </FormControl>
             </div>
-            {/* degree of participation */}
+            {/* how users able to interact during meeting */}
             <div className={classes.root}>
                 <FormControl component="fieldset" className={classes.formControl}>
-                    <FormLabel className={questionWords} component="legend">What degree of interaction is needed?</FormLabel>
+                    <FormLabel className={questionWords} component="legend">How will users be able to interact during the meeting?</FormLabel>
                     <br></br>
                     <FormGroup>
                         <FormControlLabel
-                            control={<Checkbox checked={passo} onChange={handleChange} name="passo" style={{ color: "white" }} />}
-                            label={<Typography className={answerWords}>passive/observation only</Typography>}
+                            control={<Checkbox checked={speak} onChange={handleChange} name="speak" style={{ color: "white" }} />}
+                            label={<Typography className={answerWords}>speak</Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={passc} onChange={handleChange} name="passc" style={{ color: "white" }} />}
-                            label={<Typography className={answerWords}>passive comments</Typography>}
+                            control={<Checkbox checked={lcomms} onChange={handleChange} name="lcomms" style={{ color: "white" }} />}
+                            label={<Typography className={answerWords}>leave comments</Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={part} onChange={handleChange} name="part" style={{ color: "white" }} />}
-                            label={<Typography className={answerWords}>participation</Typography>}
+                            control={<Checkbox checked={eapub} onChange={handleChange} name="eapub" style={{ color: "white" }} />}
+                            label={<Typography className={answerWords}>edit/annotate meeting materials publicly</Typography>}
+                        />
+                        <FormControlLabel
+                            control={<Checkbox checked={mienv} onChange={handleChange} name="mienv" style={{ color: "white" }} />}
+                            label={<Typography className={answerWords}>move and/or interact with environment in AR/VR</Typography>}
+                        />
+                        <FormControlLabel
+                            control={<Checkbox checked={noint} onChange={handleChange} name="noint" style={{ color: "white" }} />}
+                            label={<Typography className={answerWords}>there will be no interaction</Typography>}
                         />
                     </FormGroup>
                     <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
