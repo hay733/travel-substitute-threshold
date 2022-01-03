@@ -8,8 +8,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtons from './ToggleButtons'
 
 /**
  * the css styles for the components
@@ -39,29 +38,17 @@ function createData(constructs, degree, recommendation) {
 }
 
 /**
- * creates a toggle button group for low/med/high degree
- * default value is determined by quiz, else low if quiz skipped
- */
-const buttonGroup = [
-  <ToggleButtonGroup color="primary" value='low' /**exclusive onChange={handleChange}**/>
-    <ToggleButton value="low">Low</ToggleButton>
-    <ToggleButton value="med">Medium</ToggleButton>
-    <ToggleButton value="high">High</ToggleButton>
-  </ToggleButtonGroup>,
-];
-
-/**
  * const that creates the rows
  */
 const rows = [
-  createData('Engagement', buttonGroup, 100),
-  createData('Knowledge', buttonGroup, 37),
-  createData('Mental Workload', buttonGroup, 100),
-  createData('Performance', buttonGroup, 76),
-  createData('Rapport', buttonGroup, 46),
-  createData('Shared Situational Awareness', buttonGroup, 100),
-  createData('Trust', buttonGroup, 90),
-  createData('Usability', buttonGroup, 100),
+  createData('Engagement', <ToggleButtons />, 'Virtual Reality (XR)'),
+  createData('Knowledge', <ToggleButtons />, 'Teleconference'),
+  createData('Mental Workload', <ToggleButtons />, 'Face-to-Face or Teleconference'),
+  createData('Performance', <ToggleButtons />, 'Virtual Reality (XR) or Face-to-Face'),
+  createData('Rapport', <ToggleButtons />, 'Virtual Reality (XR)'),
+  createData('Shared Situational Awareness', <ToggleButtons />, 'Virtual Reality (XR)'),
+  createData('Trust', <ToggleButtons />, 'Teleconference'),
+  createData('Usability', <ToggleButtons />, 'Teleconference or Virtual Reality (XR)'),
 ];
 
 /**
