@@ -26,14 +26,15 @@ function createData(categories, rate, original) {
 }
 
 const rows = [
-  createData('Mental Workload', 15, 85),
-  createData('Social Distance', 26, 10),
-  createData('Power Difference', 30, 37),
-  createData('Rapport/Trust', 35, 100),
-  createData('Embodiment', 67, 76),
-  createData('Engagement', 98, 46),
-  createData('Agency', 78, 100),
-  createData('Artificiality', 53, 90),
+  createData('Co-Presence', 15, 85),
+  createData('Engagement', 26, 10),
+  createData('Knowledge', 30, 37),
+  createData('Mental Workload', 35, 100),
+  createData('Performance', 67, 76),
+  createData('Rapport', 98, 46),
+  createData('Shared Situational Awareness', 78, 100),
+  createData('Trust', 53, 90),
+  createData('Usability', 89, 100),
 ];
 
 function DataTable() {
