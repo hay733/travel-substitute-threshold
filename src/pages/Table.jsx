@@ -1,4 +1,5 @@
 import React from 'react';
+import '@mui/material';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -7,8 +8,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import ButtonGroup from '@mui/material/ButtonGroup';
-import Button from '@mui/material/Button';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import ToggleButton from '@mui/material/ToggleButton';
 
 /**
  * the css styles for the components
@@ -38,27 +39,35 @@ function createData(constructs, degree, recommendation) {
 }
 
 /**
- * creates a button group for low/med/high degree
+ * creates a toggle button group for low/med/high degree
+ * default value is determined by quiz, else low if quiz skipped
  */
 const buttonGroup = [
-  <ButtonGroup>
-    <Button>Low</Button>
-    <Button>Medium</Button>
-    <Button>High</Button>
-  </ButtonGroup>,
+  <ToggleButtonGroup color="primary" value='low' /**exclusive onChange={handleChange}**/>
+    <ToggleButton value="low">Low</ToggleButton>
+    <ToggleButton value="med">Medium</ToggleButton>
+    <ToggleButton value="high">High</ToggleButton>
+  </ToggleButtonGroup>,
 ];
 
+/**
+ * const that creates the rows
+ */
 const rows = [
-  createData('Engagement', buttonGroup, 10),
-  createData('Knowledge', 30, 37),
-  createData('Mental Workload', 35, 100),
-  createData('Performance', 67, 76),
-  createData('Rapport', 98, 46),
-  createData('Shared Situational Awareness', 78, 100),
-  createData('Trust', 53, 90),
-  createData('Usability', 89, 100),
+  createData('Engagement', buttonGroup, 100),
+  createData('Knowledge', buttonGroup, 37),
+  createData('Mental Workload', buttonGroup, 100),
+  createData('Performance', buttonGroup, 76),
+  createData('Rapport', buttonGroup, 46),
+  createData('Shared Situational Awareness', buttonGroup, 100),
+  createData('Trust', buttonGroup, 90),
+  createData('Usability', buttonGroup, 100),
 ];
 
+/**
+ * renders a datatable
+ * @returns the results datatable
+ */
 function DataTable() {
   const classes = useStyles();
 
