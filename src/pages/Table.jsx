@@ -1,4 +1,5 @@
 import React from 'react';
+import '@mui/material';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -7,7 +8,11 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import ToggleButtons from './ToggleButtons'
 
+/**
+ * the css styles for the components
+ */
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
@@ -21,22 +26,35 @@ const useStyles = makeStyles({
   },
 });
 
-function createData(categories, rate, original) {
-  return { categories, rate, original };
+/**
+ * allows us to input values into the table
+ * @param {*} constructs the construct being evaluated 
+ * @param {*} degree whether the construct is needed to be low/med/high 
+ * @param {*} recommendation the type of meeting recommended based off of the degree and construct
+ * @returns the data row generated from the categories
+ */
+function createData(constructs, degree, recommendation) {
+  return { constructs, degree, recommendation };
 }
 
+/**
+ * const that creates the rows
+ */
 const rows = [
-  createData('Co-Presence', 15, 85),
-  createData('Engagement', 26, 10),
-  createData('Knowledge', 30, 37),
-  createData('Mental Workload', 35, 100),
-  createData('Performance', 67, 76),
-  createData('Rapport', 98, 46),
-  createData('Shared Situational Awareness', 78, 100),
-  createData('Trust', 53, 90),
-  createData('Usability', 89, 100),
+  createData('Engagement', <ToggleButtons />, 'Virtual Reality (XR)'),
+  createData('Knowledge', <ToggleButtons />, 'Teleconference'),
+  createData('Mental Workload', <ToggleButtons />, 'Face-to-Face or Teleconference'),
+  createData('Performance', <ToggleButtons />, 'Virtual Reality (XR) or Face-to-Face'),
+  createData('Rapport', <ToggleButtons />, 'Virtual Reality (XR)'),
+  createData('Shared Situational Awareness', <ToggleButtons />, 'Virtual Reality (XR)'),
+  createData('Trust', <ToggleButtons />, 'Teleconference'),
+  createData('Usability', <ToggleButtons />, 'Teleconference or Virtual Reality (XR)'),
 ];
 
+/**
+ * renders a datatable
+ * @returns the results datatable
+ */
 function DataTable() {
   const classes = useStyles();
 
@@ -45,19 +63,19 @@ function DataTable() {
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell className={classes.tableCell}>Data Categories</TableCell>
-            <TableCell align="right" className={classes.tableCell}>Rate of Success</TableCell>
-            <TableCell align="right" className={classes.tableCell}>Your Success Rate</TableCell>
+            <TableCell className={classes.tableCell}>Constructs</TableCell>
+            <TableCell align="right" className={classes.tableCell}>Degree Required</TableCell>
+            <TableCell align="right" className={classes.tableCell}>Recommendation</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row) => (
             <TableRow key={row.name}>
               <TableCell component="th" scope="row" className={classes.tableCell}>
-                {row.categories}
+                {row.constructs}
               </TableCell>
-              <TableCell align="right" className={classes.tableCell}>{row.rate}%</TableCell>
-              <TableCell align="right" className={classes.tableCell}>{row.original}%</TableCell>
+              <TableCell align="right" className={classes.tableCell}>{row.degree}</TableCell>
+              <TableCell align="right" className={classes.tableCell}>{row.recommendation}</TableCell>
             </TableRow>
           ))}
         </TableBody>
