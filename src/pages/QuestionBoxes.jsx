@@ -1,12 +1,17 @@
 import React from 'react'
 import { makeStyles, Typography } from "@material-ui/core"
+import { styled } from '@mui/material/styles';
 import FormLabel from '@material-ui/core/FormLabel'
 import FormControl from '@material-ui/core/FormControl'   
 import FormGroup from '@material-ui/core/FormGroup'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import Checkbox from '@material-ui/core/Checkbox'
+import Divider from '@mui/material/Divider';
 
+/**
+ * constant that sets the styling for different types of text
+ */
 const useStyles = makeStyles(() => ({
     questionWords: {
         fontFamily: "Open Sans, sans-serif",
@@ -26,6 +31,7 @@ const useStyles = makeStyles(() => ({
         // textAlign: "center",
         color: "#1E2124",
     },
+    
     warningWords: {
         fontFamily: "Open Sans, sans-serif",
         fontWeight: 500,
@@ -38,6 +44,20 @@ const useStyles = makeStyles(() => ({
     },
 }));
 
+/**
+ * sets styling for the dividers
+ */
+const Root = styled('div')(({ theme }) => ({
+    width: '100%',
+    ...theme.typography.body2,
+    '& > :not(style) + :not(style)': {
+      marginTop: theme.spacing(2),
+    },
+  }));
+
+  /**
+   * sets the styling for the question boxes
+   */
 const themeStyles = makeStyles((theme) => ({
     root: {
       display: 'flex',
@@ -62,9 +82,15 @@ const themeStyles = makeStyles((theme) => ({
 //     return null;
 // }
 
+/**
+ * @returns all the rendered questions and answers + dividers
+ */
 function QuestionBoxes() {
+    //text styles call
     const { questionWords, answerWords, warningWords } = useStyles();
+    //questions style call
     const classes = themeStyles();
+    //creates al the default values for the answers
     const [state, setState] = React.useState({
         share: false, discuss: false, decision: false, teach: false,
         bboss: false, sup: false, client: false, colld: false, colls: false, supv: false, 
@@ -79,10 +105,12 @@ function QuestionBoxes() {
         speak: false, lcomms: false, eapub: false, mienv: false, noint: false,
     });
     
+    //handles question box toggle changes
     const handleChange = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });
     };
 
+    //sets the questions
     const { share, discuss, decision, teach, // what is the goal/focus
         bboss, sup, client, colld, colls, supv, // who is other
         strang, aquaint, friend, cfriend, fam, // how well knwo other
@@ -97,8 +125,10 @@ function QuestionBoxes() {
     } = state;
 
     return(
+        <Root>
         <div>
             {/* //  What is the goal/focus  */}
+            <Divider textAlign="right" className={answerWords}>rapport</Divider>
             <div className={classes.root}>
                 <br></br><br></br><br></br><br></br><br></br>
                 <FormControl component="fieldset" className={classes.formControl}>
@@ -418,6 +448,7 @@ function QuestionBoxes() {
                 </FormControl>
             </div>
         </div>
+        </Root>
     );
 }
 
