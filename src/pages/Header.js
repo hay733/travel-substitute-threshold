@@ -1,7 +1,5 @@
 import '../css/trt.css'
 
-
-
 import { AppBar, Toolbar, Typography, makeStyles, Button } from "@material-ui/core";
 import { Link as RouterLink } from "react-router-dom";
 
