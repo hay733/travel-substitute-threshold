@@ -1,18 +1,14 @@
 import React from 'react';
-import '@mui/material';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
+import TablePaginationUnstyled from '@mui/base/TablePaginationUnstyled';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import ToggleButtons from './ToggleButtons'
+import Paper from '@material-ui/core/Paper';             
 
-/**
- * the css styles for the components
- */
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
@@ -26,35 +22,21 @@ const useStyles = makeStyles({
   },
 });
 
-/**
- * allows us to input values into the table
- * @param {*} constructs the construct being evaluated 
- * @param {*} degree whether the construct is needed to be low/med/high 
- * @param {*} recommendation the type of meeting recommended based off of the degree and construct
- * @returns the data row generated from the categories
- */
-function createData(constructs, degree, recommendation) {
-  return { constructs, degree, recommendation };
+function createData(categories, rate, original, description) {
+  return { categories, rate, original, description };
 }
 
-/**
- * const that creates the rows
- */
 const rows = [
-  createData('Engagement', <ToggleButtons />, 'Virtual Reality (XR)'),
-  createData('Knowledge', <ToggleButtons />, 'Teleconference'),
-  createData('Mental Workload', <ToggleButtons />, 'Face-to-Face or Teleconference'),
-  createData('Performance', <ToggleButtons />, 'Virtual Reality (XR) or Face-to-Face'),
-  createData('Rapport', <ToggleButtons />, 'Virtual Reality (XR)'),
-  createData('Shared Situational Awareness', <ToggleButtons />, 'Virtual Reality (XR)'),
-  createData('Trust', <ToggleButtons />, 'Teleconference'),
-  createData('Usability', <ToggleButtons />, 'Teleconference or Virtual Reality (XR)'),
+  createData('Mental Workload', 15, 85),
+  createData('Social Distance', 26, 10),
+  createData('Power Difference', 30, 37),
+  createData('Rapport/Trust', 35, 100, 'Rapport: A relationship defined by a deep sense of empathy and community' + '\n' + 'Trust: The belief that another person is honest and reliable'),
+  createData('Embodiment', 67, 76),
+  createData('Engagement', 98, 46, 'The degree of interaction needed for a task to be successful'),
+  createData('Agency', 78, 100),
+  createData('Artificiality', 53, 90),
 ];
 
-/**
- * renders a datatable
- * @returns the results datatable
- */
 function DataTable() {
   const classes = useStyles();
 
@@ -63,19 +45,20 @@ function DataTable() {
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell className={classes.tableCell}>Constructs</TableCell>
-            <TableCell align="right" className={classes.tableCell}>Degree Required</TableCell>
-            <TableCell align="right" className={classes.tableCell}>Recommendation</TableCell>
+            <TableCell className={classes.tableCell}>Data Categories</TableCell>
+            <TableCell align="right" className={classes.tableCell}>Rate of Success</TableCell>
+            <TableCell align="right" className={classes.tableCell}>Your Success Rate</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row) => (
             <TableRow key={row.name}>
-              <TableCell component="th" scope="row" className={classes.tableCell}>
-                {row.constructs}
+              <TableCell component="th" scope="row" className={classes.tableCell} description={row.descrption}>
+                {row.categories}
+                <p id='construct' hidden>{row.description}</p>
               </TableCell>
-              <TableCell align="right" className={classes.tableCell}>{row.degree}</TableCell>
-              <TableCell align="right" className={classes.tableCell}>{row.recommendation}</TableCell>
+              <TableCell align="right" className={classes.tableCell}>{row.rate}%</TableCell>
+              <TableCell align="right" className={classes.tableCell}>{row.original}%</TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -83,5 +66,4 @@ function DataTable() {
     </TableContainer>
   );
 }
-
 export default DataTable;

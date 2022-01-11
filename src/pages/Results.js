@@ -4,11 +4,7 @@ import DataTable from './Table'
 import { makeStyles, withStyles, Button } from "@material-ui/core"
 import React, { useEffect, useState } from 'react';
 import QuestionBoxes from './QuestionBoxes';
-// import Modal from 'react-bootstrap/Modal'
-// import { Modal } from '@mui/material';
 import Modal from '@mui/material/Modal';
-//import 'bootstrap/dist/css/bootstrap.min.css';  
-
 import Box from "@material-ui/core/Box";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -77,7 +73,8 @@ class Results extends React.Component {
     state = {
         isActive: false,
         isOpen: false,
-        title: null
+        title: null, 
+        description: null
     };
     handleShow = () => {
         this.setState({isActive: true});
@@ -87,9 +84,13 @@ class Results extends React.Component {
         this.setState({isActive: false});
     };
 
-    openModal = (e) => {
-        //console.log(e.target.textContent);
-        this.title = e.target.textContent;
+    openModal = (e, data) => {
+        console.log(e);
+        this.title = e.target.innerText;
+        var str = e.target.innerHTML;
+        str.replace("=", '');
+        this.description = str.replace(/<[^>]+>/g, '');
+        // this.description = substring(e.targt.innerHTML.indexOf('<') + 1);
         this.setState({isOpen: true});
     }
     closeModal = () => {
@@ -123,25 +124,10 @@ class Results extends React.Component {
                             data
                         </Button></div>
                     )}
-                    {/* <Modal show={this.state.isOpen} onHide={this.closeModal} style={{width: "200px", display: "block", margin: 'auto'}} centered  style={{opacity:1}}>
-                        <Modal.Header>
-                            {this.title}
-                        </Modal.Header>
-                        <Modal.Body>
-                            Body
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button variant='primary' onClick={this.closeModal}>
-                                Close
-                            </Button>
-                        </Modal.Footer>
-                    </Modal> */}
                     <Dialog open={this.state.isOpen} onClose={this.closeModal} maxWidth='md' fullWidth={true}>
                         <Typography margin='10%' align='center'>
                             <h2>{this.title}</h2>
-                        </Typography>
-                        <Typography align='center' margin='10%'>
-                            Description
+                            <p>{this.description}</p>
                         </Typography>
                         <Button onClick={this.closeModal}>Close</Button>
                     </Dialog>
