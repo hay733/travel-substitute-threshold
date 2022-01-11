@@ -31,6 +31,16 @@ const useStyles = makeStyles(() => ({
         // textAlign: "center",
         color: "#1E2124",
     },
+
+    divWords: {
+        fontFamily: "Open Sans, sans-serif",
+        fontWeight: 700,
+        fontSize: "23px",
+        // textTransform: "lowercase",
+        // margin: "25px",
+        // textAlign: "center",
+        color: "#1E2124",
+    },
     
     warningWords: {
         fontFamily: "Open Sans, sans-serif",
@@ -87,7 +97,7 @@ const themeStyles = makeStyles((theme) => ({
  */
 function QuestionBoxes() {
     //text styles call
-    const { questionWords, answerWords, warningWords } = useStyles();
+    const { questionWords, answerWords,divWords, warningWords } = useStyles();
     //questions style call
     const classes = themeStyles();
     //creates al the default values for the answers
@@ -128,7 +138,7 @@ function QuestionBoxes() {
         <Root>
         <div>
             {/* //  What is the goal/focus  */}
-            <Divider textAlign="right" className={answerWords}>rapport</Divider>
+            <Divider textAlign="right" className={divWords}>rapport</Divider>
             <div className={classes.root}>
                 <br></br><br></br><br></br><br></br><br></br>
                 <FormControl component="fieldset" className={classes.formControl}>
@@ -249,6 +259,7 @@ function QuestionBoxes() {
                     <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
                 </FormControl>
             </div>
+            <Divider textAlign="right" className={divWords}>engagement</Divider>
             {/* degree of participation */}
             <div className={classes.root}>
                 <FormControl component="fieldset" className={classes.formControl}>
@@ -339,6 +350,7 @@ function QuestionBoxes() {
                     <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
                 </FormControl>
             </div>
+            <Divider textAlign="right" className={divWords}>knowledge</Divider>
             {/* prev num meetings */}
             <div className={classes.root}>
                 <FormControl component="fieldset" className={classes.formControl}>
@@ -365,6 +377,7 @@ function QuestionBoxes() {
                     <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
                 </FormControl>
             </div>
+            <Divider textAlign="right" className={divWords}>performance</Divider>
             {/* realistic avatars */}
             <div className={classes.root}>
                 <FormControl component="fieldset" className={classes.formControl}>
@@ -417,6 +430,7 @@ function QuestionBoxes() {
                     <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
                 </FormControl>
             </div>
+            <Divider textAlign="right" className={divWords}>mental workload</Divider>
             {/* how users able to interact during meeting */}
             <div className={classes.root}>
                 <FormControl component="fieldset" className={classes.formControl}>
