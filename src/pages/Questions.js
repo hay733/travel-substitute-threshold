@@ -1,10 +1,14 @@
 import React from 'react'
 import { withStyles, Button } from "@material-ui/core"
-
 import Header from './Header'
 import QuestionBoxes from './QuestionBoxes'
 import { render } from '@testing-library/react';
 
+/**
+ * css constant styles for different components
+ * @param {*} theme 
+ * @returns 
+ */
 const styles = theme => ({
     submitButton: {
       fontFamily: "Open Sans, sans-serif",
@@ -27,6 +31,10 @@ const styles = theme => ({
     },
 });
 
+/**
+ * renders the questions and the submit button
+ * calls the questionBoxes component which renders all the quiz questions
+ */
 class Questions extends React.Component {
     constructor(props) {
         super(props);
