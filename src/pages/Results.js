@@ -4,6 +4,7 @@ import DataTable from './Table'
 import { makeStyles, withStyles, Button } from "@material-ui/core"
 import React from 'react'
 import QuestionBoxes from './QuestionBoxes';
+import { ButtonGroup } from '@mui/material';
 
 const useStyles = makeStyles(() => ({
     container: {
@@ -62,17 +63,18 @@ function ResultsTable() {
 }
 
 class Results extends React.Component {
-    state = {
-        isActive: false
-    };
+    // state, handleshow and handlehide toggle resultstable, but dont need atm
+    // state = {
+    //     isActive: false
+    // };
     
-    handleShow = () => {
-        this.setState({isActive: true});
-      };
+    // handleShow = () => {
+    //     this.setState({isActive: true});
+    //   };
     
-      handleHide = () => {
-        this.setState({isActive: false});
-      };
+    // handleHide = () => {
+    //     this.setState({isActive: false});
+    // };
 
     render () {
         const { classes } = this.props;
@@ -80,9 +82,9 @@ class Results extends React.Component {
             <div>
                 <Header />
                 <h1 className={classes.mainWords} style = {{marginTop: "15%"}}>A teleconferencing software is your best option</h1>
-                <br></br>
+                {/* <br></br> */}
                 
-                {this.state.isActive ?(
+                {/* {this.state.isActive ?(
                     <div style={{textAlign: "center"}}><Button variant="contained" onClick={this.handleHide} className={classes.whyButton}>
                         hide data
                     </Button></div>
@@ -91,11 +93,26 @@ class Results extends React.Component {
                         data
                     </Button></div>
                 )}
-                {this.state.isActive && <ResultsTable />}
+                {this.state.isActive && <ResultsTable />} */}
+
+                <ResultsTable />
+
                 <br></br><br></br><br></br>
-                <div style={{textAlign: "center", marginBottom: "5%"}}><a href='/about' classname={classes.mainWords} style={{color: "black", fontSize: 20, fontFamily: "Open Sans, sans-serif"}}>
-                    more info
-                </a></div>
+                {/* <div style={{textAlign: "center", marginBottom: "5%"}}>
+                    <a href='/about' classname={classes.mainWords} style={{color: "black", fontSize: 20, fontFamily: "Open Sans, sans-serif"}}>
+                        more info
+                    </a>
+                    <br></br>
+                    <a href='/about' classname={classes.mainWords} style={{color: "black", fontSize: 20, fontFamily: "Open Sans, sans-serif"}}>
+                        contribute my data anonymously
+                    </a>
+                </div> */}
+                <div style={{textAlign: "center"}}>
+                    <ButtonGroup variant="outlined" aria-label="text button group">
+                        <Button href="/about">more info</Button>
+                        <Button>anonymously contribute my data</Button>
+                    </ButtonGroup>
+                </div>
             </div>
         );
     }
