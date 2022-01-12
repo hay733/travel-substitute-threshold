@@ -33,22 +33,22 @@ const useStyles = makeStyles({
  * @param {*} recommendation the type of meeting recommended based off of the degree and construct
  * @returns the data row generated from the categories
  */
-function createData(constructs, degree, recommendation) {
-  return { constructs, degree, recommendation };
+function createData(constructs, degree, recommendation, description) {
+  return { constructs, degree, recommendation, description };
 }
 
 /**
  * const that creates the rows
  */
 const rows = [
-  createData('Engagement', <ToggleButtons />, 'Virtual Reality (XR)'),
-  createData('Knowledge', <ToggleButtons />, 'Teleconference'),
+  createData('Engagement', <ToggleButtons />, 'Virtual Reality (XR)', 'The degree of interaction needed for a task to be successful'),
+  createData('Knowledge', <ToggleButtons />, 'Teleconference', 'What participants know about the meeting topic'),
   createData('Mental Workload', <ToggleButtons />, 'Face-to-Face or Teleconference'),
-  createData('Performance', <ToggleButtons />, 'Virtual Reality (XR) or Face-to-Face'),
-  createData('Rapport', <ToggleButtons />, 'Virtual Reality (XR)'),
-  createData('Shared Situational Awareness', <ToggleButtons />, 'Virtual Reality (XR)'),
-  createData('Trust', <ToggleButtons />, 'Teleconference'),
-  createData('Usability', <ToggleButtons />, 'Teleconference or Virtual Reality (XR)'),
+  createData('Performance', <ToggleButtons />, 'Virtual Reality (XR) or Face-to-Face', 'The ability for a person to successfully perform a task'),
+  createData('Rapport', <ToggleButtons />, 'Virtual Reality (XR)', 'A relationship defined by a deep sense of empathy and community'),
+  createData('Shared Situational Awareness', <ToggleButtons />, 'Virtual Reality (XR)', 'Multiple people having a common idea about what is happening'),
+  createData('Trust', <ToggleButtons />, 'Teleconference', 'The belief that another person is honest and reliable'),
+  createData('Usability', <ToggleButtons />, 'Teleconference or Virtual Reality (XR)', 'The ability of a process to be performed simply and effectively'),
 ];
 
 /**
@@ -73,6 +73,7 @@ function DataTable() {
             <TableRow key={row.name}>
               <TableCell component="th" scope="row" className={classes.tableCell}>
                 {row.constructs}
+                <p id='construct' hidden>{row.description}</p>
               </TableCell>
               <TableCell align="right" className={classes.tableCell}>{row.degree}</TableCell>
               <TableCell align="right" className={classes.tableCell}>{row.recommendation}</TableCell>
