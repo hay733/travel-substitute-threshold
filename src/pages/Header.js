@@ -1,10 +1,10 @@
 import '../css/trt.css'
-
-
-
 import { AppBar, Toolbar, Typography, makeStyles, Button } from "@material-ui/core";
 import { Link as RouterLink } from "react-router-dom";
 
+/**
+ * sets the css styles for the different components
+ */
 const useStyles = makeStyles(() => ({
   header: {
     backgroundColor: "#1E2124",
@@ -34,6 +34,9 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
+/**
+ * sets the label and link for each navbar "button"
+ */
 const headersData = [
   {
     label: "home",
@@ -49,6 +52,10 @@ const headersData = [
   },
 ];
 
+/**
+ * 
+ * @returns The navbar w title and buttons
+ */
 export default function Header() {
   const { header, logo, menuButton, toolbar } = useStyles();
                      

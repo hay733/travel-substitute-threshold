@@ -7,13 +7,16 @@ import React from 'react';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
+/**
+ * @returns sets the toggle ability for the buttons
+ */
 export default function ToggleButtons() {
   const [alignment, setAlignment] = React.useState('high');
 
   const handleAlignment = (event, newAlignment) => {
     setAlignment(newAlignment);
   };
-
+ 
   return (
     <ToggleButtonGroup
       value={alignment}

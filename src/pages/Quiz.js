@@ -2,6 +2,9 @@ import Header from './Header'
 import { makeStyles, Button } from "@material-ui/core"
 import React from 'react'
 
+/**
+ * sets the css styles for the different components
+ */
 const useStyles = makeStyles(() => ({
     quizButton: {
       fontFamily: "Open Sans, sans-serif",
@@ -32,6 +35,9 @@ const useStyles = makeStyles(() => ({
     },
 }));
 
+/**
+ * @returns the message + start quiz button
+ */
 function Quiz() {
     const { container, content_container, mainWords, quizButton } = useStyles();
 
