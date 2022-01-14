@@ -1,18 +1,16 @@
 import React from 'react';
-import '@mui/material';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
+import TablePaginationUnstyled from '@mui/base/TablePaginationUnstyled';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import ToggleButtons from './ToggleButtons'
+import Paper from '@material-ui/core/Paper';      
 
-/**
- * the css styles for the components
- */
+import ToggleButtons from './ToggleButtons'  
+
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
@@ -37,9 +35,6 @@ function createData(constructs, degree, recommendation, description) {
   return { constructs, degree, recommendation, description };
 }
 
-/**
- * const that creates the rows
- */
 const rows = [
   createData('Engagement', <ToggleButtons />, 'Virtual Reality (XR)', 'The degree of interaction needed for a task to be successful'),
   createData('Knowledge', <ToggleButtons />, 'Teleconference', 'What participants know about the meeting topic'),
@@ -51,10 +46,6 @@ const rows = [
   createData('Usability', <ToggleButtons />, 'Teleconference or Virtual Reality (XR)', 'The ability of a process to be performed simply and effectively'),
 ];
 
-/**
- * renders a datatable
- * @returns the results datatable
- */
 function DataTable() {
   const classes = useStyles();
 
@@ -71,7 +62,7 @@ function DataTable() {
         <TableBody>
           {rows.map((row) => (
             <TableRow key={row.name}>
-              <TableCell component="th" scope="row" className={classes.tableCell}>
+              <TableCell component="th" scope="row" className={classes.tableCell} description={row.description}>
                 {row.constructs}
                 <p id='construct' hidden>{row.description}</p>
               </TableCell>
@@ -84,5 +75,4 @@ function DataTable() {
     </TableContainer>
   );
 }
-
 export default DataTable;
