@@ -56,20 +56,6 @@ const styles = theme => ({
       },
 });
 
-function ResultsTable() {
-    const { container, content_container } = useStyles();
-    return(
-        <div className={container}>
-            {/* <div className={content_container} style={{ float: "left", width: "40%", overflowY: "scroll"}}>
-                <QuestionBoxes />
-            </div> */}
-            <div className={content_container} /**style={{ float: "right", width: "59.5%" }}**/>
-                <DataTable />
-            </div>
-        </div>
-    );
-}
-
 class Results extends React.Component {
     state = {
         isActive: false,
@@ -84,18 +70,6 @@ class Results extends React.Component {
     handleHide = () => {
         this.setState({isActive: false});
     };
-    // state, handleshow and handlehide toggle resultstable, but dont need atm
-    // state = {
-    //     isActive: false
-    // };
-    
-    // handleShow = () => {
-    //     this.setState({isActive: true});
-    //   };
-    
-    // handleHide = () => {
-    //     this.setState({isActive: false});
-    // };
 
     openModal = (e, data) => {
         console.log(e);
@@ -114,29 +88,16 @@ class Results extends React.Component {
         return (
             <>
                 <div>
+                    {/* Render header and best option */}
                     <Header />
                     <h1 className={classes.mainWords} style = {{marginTop: "15%"}}>A teleconferencing software is your best option</h1>
-                    <br></br>
-                    
-                    {this.state.isActive ?(
-                        // <div>
-                        //     <div style={{textAlign: "center"}}><Button variant="contained" onClick={this.handleHide} className={classes.whyButton}>
-                        //         hide data
-                        //     </Button></div>
-                        //     <div>
-                        //          <div className={classes.content_container} style={{ float: "left", width: "40%", overflowY: "scroll"}}>
-                        //              <QuestionBoxes />
-                        //          </div>
-                                    <div className={classes.content_container} style={{ float: "right", width: "59.5%" }} onClick={this.openModal}>
-                                        <DataTable/>
-                                    </div>
-                                // </div>
-                            // </div>
-                    ) : (
-                        <div style={{textAlign: "center"}}><Button variant="contained" onClick={this.handleShow} className={classes.whyButton}>
-                            data
-                        </Button></div>
-                    )}
+
+                    {/* Render the datatable, and have onClick to open popups */}
+                    <div className={classes.content_container}  onClick={this.openModal}>
+                        <DataTable/>
+                    </div>
+                        
+                    {/* generates the construct def popup */}
                     <Dialog open={this.state.isOpen} onClose={this.closeModal} maxWidth='md' fullWidth={true}>
                         <Typography margin='10%' align='center'>
                             <h2>{this.title}</h2>
@@ -145,6 +106,8 @@ class Results extends React.Component {
                         <Button onClick={this.closeModal}>Close</Button>
                     </Dialog>
                 </div>
+
+                {/* render the "next steps" buttongroup */}
                 <div style={{textAlign: "center"}}>
                     <ButtonGroup variant="outlined" aria-label="text button group">
                         <Button href="/about">more info</Button>
@@ -152,43 +115,6 @@ class Results extends React.Component {
                     </ButtonGroup>
                 </div>
           </>
-// =======
-//             <div>
-//                 <Header />
-//                 <h1 className={classes.mainWords} style = {{marginTop: "15%"}}>A teleconferencing software is your best option</h1>
-//                 {/* <br></br> */}
-                
-//                 {/* {this.state.isActive ?(
-//                     <div style={{textAlign: "center"}}><Button variant="contained" onClick={this.handleHide} className={classes.whyButton}>
-//                         hide data
-//                     </Button></div>
-//                 ) : (
-//                     <div style={{textAlign: "center"}}><Button variant="contained" onClick={this.handleShow} className={classes.whyButton}>
-//                         data
-//                     </Button></div>
-//                 )}
-//                 {this.state.isActive && <ResultsTable />} */}
-
-//                 <ResultsTable />
-
-//                 <br></br><br></br><br></br>
-//                 {/* <div style={{textAlign: "center", marginBottom: "5%"}}>
-//                     <a href='/about' classname={classes.mainWords} style={{color: "black", fontSize: 20, fontFamily: "Open Sans, sans-serif"}}>
-//                         more info
-//                     </a>
-//                     <br></br>
-//                     <a href='/about' classname={classes.mainWords} style={{color: "black", fontSize: 20, fontFamily: "Open Sans, sans-serif"}}>
-//                         contribute my data anonymously
-//                     </a>
-//                 </div> */}
-//                 <div style={{textAlign: "center"}}>
-//                     <ButtonGroup variant="outlined" aria-label="text button group">
-//                         <Button href="/about">more info</Button>
-//                         <Button>anonymously contribute my data</Button>
-//                     </ButtonGroup>
-//                 </div>
-//             </div>
-// >>>>>>> master
         );
     }
 }
