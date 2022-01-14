@@ -12,6 +12,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import Slide from "@material-ui/core/Slide";
+import { ButtonGroup } from '@mui/material';
 
 const useStyles = makeStyles(() => ({
     container: {
@@ -54,21 +55,21 @@ const styles = theme => ({
           color: "#1E2124",
       },
 });
-// function ResultsTable() {
-//     const { container, content_container } = useStyles();
-//     return(
-//         <div className={container}>
-//             <div className={content_container} style={{ float: "left", width: "40%", overflowY: "scroll"}}>
-//                 <QuestionBoxes />
-//             </div>
-//             <div className={content_container} style={{ float: "right", width: "59.5%" }} onClick={this.openModal}>
-//                 <DataTable/>
-//             </div>
-//         </div> 
-//     );
-// }
 
-// const { container, content_container } = useStyles();
+function ResultsTable() {
+    const { container, content_container } = useStyles();
+    return(
+        <div className={container}>
+            {/* <div className={content_container} style={{ float: "left", width: "40%", overflowY: "scroll"}}>
+                <QuestionBoxes />
+            </div> */}
+            <div className={content_container} /**style={{ float: "right", width: "59.5%" }}**/>
+                <DataTable />
+            </div>
+        </div>
+    );
+}
+
 class Results extends React.Component {
     state = {
         isActive: false,
@@ -83,6 +84,18 @@ class Results extends React.Component {
     handleHide = () => {
         this.setState({isActive: false});
     };
+    // state, handleshow and handlehide toggle resultstable, but dont need atm
+    // state = {
+    //     isActive: false
+    // };
+    
+    // handleShow = () => {
+    //     this.setState({isActive: true});
+    //   };
+    
+    // handleHide = () => {
+    //     this.setState({isActive: false});
+    // };
 
     openModal = (e, data) => {
         console.log(e);
@@ -132,7 +145,50 @@ class Results extends React.Component {
                         <Button onClick={this.closeModal}>Close</Button>
                     </Dialog>
                 </div>
+                <div style={{textAlign: "center"}}>
+                    <ButtonGroup variant="outlined" aria-label="text button group">
+                        <Button href="/about">more info</Button>
+                        <Button>anonymously contribute my data</Button>
+                    </ButtonGroup>
+                </div>
           </>
+// =======
+//             <div>
+//                 <Header />
+//                 <h1 className={classes.mainWords} style = {{marginTop: "15%"}}>A teleconferencing software is your best option</h1>
+//                 {/* <br></br> */}
+                
+//                 {/* {this.state.isActive ?(
+//                     <div style={{textAlign: "center"}}><Button variant="contained" onClick={this.handleHide} className={classes.whyButton}>
+//                         hide data
+//                     </Button></div>
+//                 ) : (
+//                     <div style={{textAlign: "center"}}><Button variant="contained" onClick={this.handleShow} className={classes.whyButton}>
+//                         data
+//                     </Button></div>
+//                 )}
+//                 {this.state.isActive && <ResultsTable />} */}
+
+//                 <ResultsTable />
+
+//                 <br></br><br></br><br></br>
+//                 {/* <div style={{textAlign: "center", marginBottom: "5%"}}>
+//                     <a href='/about' classname={classes.mainWords} style={{color: "black", fontSize: 20, fontFamily: "Open Sans, sans-serif"}}>
+//                         more info
+//                     </a>
+//                     <br></br>
+//                     <a href='/about' classname={classes.mainWords} style={{color: "black", fontSize: 20, fontFamily: "Open Sans, sans-serif"}}>
+//                         contribute my data anonymously
+//                     </a>
+//                 </div> */}
+//                 <div style={{textAlign: "center"}}>
+//                     <ButtonGroup variant="outlined" aria-label="text button group">
+//                         <Button href="/about">more info</Button>
+//                         <Button>anonymously contribute my data</Button>
+//                     </ButtonGroup>
+//                 </div>
+//             </div>
+// >>>>>>> master
         );
     }
 }

@@ -22,19 +22,26 @@ const useStyles = makeStyles({
   },
 });
 
-function createData(categories, rate, original, description) {
-  return { categories, rate, original, description };
+/**
+ * allows us to input values into the table
+ * @param {*} constructs the construct being evaluated 
+ * @param {*} degree whether the construct is needed to be low/med/high 
+ * @param {*} recommendation the type of meeting recommended based off of the degree and construct
+ * @returns the data row generated from the categories
+ */
+function createData(constructs, degree, recommendation, description) {
+  return { constructs, degree, recommendation, description };
 }
 
 const rows = [
-  createData('Mental Workload', 15, 85),
-  createData('Social Distance', 26, 10),
-  createData('Power Difference', 30, 37),
-  createData('Rapport/Trust', 35, 100, 'Rapport: A relationship defined by a deep sense of empathy and community' + '\n' + 'Trust: The belief that another person is honest and reliable'),
-  createData('Embodiment', 67, 76),
-  createData('Engagement', 98, 46, 'The degree of interaction needed for a task to be successful'),
-  createData('Agency', 78, 100),
-  createData('Artificiality', 53, 90),
+  createData('Engagement', <ToggleButtons />, 'Virtual Reality (XR)', 'The degree of interaction needed for a task to be successful'),
+  createData('Knowledge', <ToggleButtons />, 'Teleconference', 'What participants know about the meeting topic'),
+  createData('Mental Workload', <ToggleButtons />, 'Face-to-Face or Teleconference'),
+  createData('Performance', <ToggleButtons />, 'Virtual Reality (XR) or Face-to-Face', 'The ability for a person to successfully perform a task'),
+  createData('Rapport', <ToggleButtons />, 'Virtual Reality (XR)', 'A relationship defined by a deep sense of empathy and community'),
+  createData('Shared Situational Awareness', <ToggleButtons />, 'Virtual Reality (XR)', 'Multiple people having a common idea about what is happening'),
+  createData('Trust', <ToggleButtons />, 'Teleconference', 'The belief that another person is honest and reliable'),
+  createData('Usability', <ToggleButtons />, 'Teleconference or Virtual Reality (XR)', 'The ability of a process to be performed simply and effectively'),
 ];
 
 function DataTable() {
@@ -53,8 +60,8 @@ function DataTable() {
         <TableBody>
           {rows.map((row) => (
             <TableRow key={row.name}>
-              <TableCell component="th" scope="row" className={classes.tableCell} description={row.descrption}>
-                {row.categories}
+              <TableCell component="th" scope="row" className={classes.tableCell} description={row.description}>
+                {row.constructs}
                 <p id='construct' hidden>{row.description}</p>
               </TableCell>
               <TableCell align="right" className={classes.tableCell}>{row.rate}%</TableCell>
