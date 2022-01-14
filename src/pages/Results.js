@@ -119,19 +119,19 @@ class Results extends React.Component {
                     <br></br>
                     
                     {this.state.isActive ?(
-                        <div>
-                            <div style={{textAlign: "center"}}><Button variant="contained" onClick={this.handleHide} className={classes.whyButton}>
-                                hide data
-                            </Button></div>
-                            <div>
-                            <div className={classes.content_container} style={{ float: "left", width: "40%", overflowY: "scroll"}}>
-                                <QuestionBoxes />
-                            </div>
-                            <div className={classes.content_container} style={{ float: "right", width: "59.5%" }} onClick={this.openModal}>
-                                <DataTable/>
-                            </div>
-                        </div>
-                    </div>
+                        // <div>
+                        //     <div style={{textAlign: "center"}}><Button variant="contained" onClick={this.handleHide} className={classes.whyButton}>
+                        //         hide data
+                        //     </Button></div>
+                        //     <div>
+                        //          <div className={classes.content_container} style={{ float: "left", width: "40%", overflowY: "scroll"}}>
+                        //              <QuestionBoxes />
+                        //          </div>
+                                    <div className={classes.content_container} style={{ float: "right", width: "59.5%" }} onClick={this.openModal}>
+                                        <DataTable/>
+                                    </div>
+                                // </div>
+                            // </div>
                     ) : (
                         <div style={{textAlign: "center"}}><Button variant="contained" onClick={this.handleShow} className={classes.whyButton}>
                             data

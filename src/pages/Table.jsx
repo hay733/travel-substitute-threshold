@@ -7,7 +7,9 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TablePaginationUnstyled from '@mui/base/TablePaginationUnstyled';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';             
+import Paper from '@material-ui/core/Paper';      
+
+import ToggleButtons from './ToggleButtons'  
 
 const useStyles = makeStyles({
   table: {
@@ -52,9 +54,9 @@ function DataTable() {
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell className={classes.tableCell}>Data Categories</TableCell>
-            <TableCell align="right" className={classes.tableCell}>Rate of Success</TableCell>
-            <TableCell align="right" className={classes.tableCell}>Your Success Rate</TableCell>
+            <TableCell className={classes.tableCell}>Constructs</TableCell>
+            <TableCell align="right" className={classes.tableCell}>Degree Required</TableCell>
+            <TableCell align="right" className={classes.tableCell}>Recommendation</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -64,8 +66,8 @@ function DataTable() {
                 {row.constructs}
                 <p id='construct' hidden>{row.description}</p>
               </TableCell>
-              <TableCell align="right" className={classes.tableCell}>{row.rate}%</TableCell>
-              <TableCell align="right" className={classes.tableCell}>{row.original}%</TableCell>
+              <TableCell align="right" className={classes.tableCell}>{row.degree}</TableCell>
+              <TableCell align="right" className={classes.tableCell}>{row.recommendation}</TableCell>
             </TableRow>
           ))}
         </TableBody>
