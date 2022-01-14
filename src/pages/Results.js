@@ -14,6 +14,9 @@ import Typography from "@material-ui/core/Typography";
 import Slide from "@material-ui/core/Slide";
 import { ButtonGroup } from '@mui/material';
 
+/**
+ * sets the css styles for the container sizes
+ */
 const useStyles = makeStyles(() => ({
     container: {
         // backgroundColor: "#545F66", // for testing/sizing
@@ -35,6 +38,9 @@ const useStyles = makeStyles(() => ({
     },
 }));
 
+/**
+ * sets the css styles for the different components
+ */
 const styles = theme => ({
     whyButton: {
         fontFamily: "Open Sans, sans-serif",
@@ -56,21 +62,29 @@ const styles = theme => ({
       },
 });
 
+/**
+ * renders the result + table + next steps buttons
+ */
 class Results extends React.Component {
+    //handles the change in state
     state = {
         isActive: false,
         isOpen: false,
         title: null, 
         description: null
     };
+
+    //shows the table
     handleShow = () => {
         this.setState({isActive: true});
     };
     
+    //hides the table
     handleHide = () => {
         this.setState({isActive: false});
     };
 
+    //opens the popup
     openModal = (e, data) => {
         console.log(e);
         this.title = e.target.innerText;
@@ -80,9 +94,12 @@ class Results extends React.Component {
         // this.description = substring(e.targt.innerHTML.indexOf('<') + 1);
         this.setState({isOpen: true});
     }
+
+    //closes the popup
     closeModal = () => {
         this.setState({isOpen: false});
     }
+
     render () {
         const { classes } = this.props;
         return (

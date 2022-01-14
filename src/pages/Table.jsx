@@ -11,6 +11,9 @@ import Paper from '@material-ui/core/Paper';
 
 import ToggleButtons from './ToggleButtons'  
 
+/**
+ * sets the css styles for the different components
+ */
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
@@ -35,6 +38,9 @@ function createData(constructs, degree, recommendation, description) {
   return { constructs, degree, recommendation, description };
 }
 
+/**
+ * creates the table data as constant values
+ */
 const rows = [
   createData('Engagement', <ToggleButtons />, 'Virtual Reality (XR)', 'The degree of interaction needed for a task to be successful'),
   createData('Knowledge', <ToggleButtons />, 'Teleconference', 'What participants know about the meeting topic'),
@@ -46,6 +52,9 @@ const rows = [
   createData('Usability', <ToggleButtons />, 'Teleconference or Virtual Reality (XR)', 'The ability of a process to be performed simply and effectively'),
 ];
 
+/**
+ * @returns remders the rows and columns for all the data
+ */
 function DataTable() {
   const classes = useStyles();
 
