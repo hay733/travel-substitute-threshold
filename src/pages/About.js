@@ -1,19 +1,18 @@
 import Header from './Header'
 import { makeStyles, Button } from "@material-ui/core"
 import React from 'react'
+import { Redirect } from'react-router-dom';
 
 
 /**
  * 
  * @returns the about page, to be deleted so goes directly to the Scottie google site
  */
-function About() {
-    return(
-        <div>
-            <Header />
-            <h1 style={{marginTop: 100}}>About</h1>
-        </div>
-    );
+class About extends React.Component {
+    render() {
+        window.open('https://sites.google.com/iastate.edu/scottie/home?authuser=0');
+        return (<Redirect to="/" />); //render function should return something
+    };
 }
 
 export default About;
