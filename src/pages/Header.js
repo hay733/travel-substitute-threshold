@@ -1,4 +1,4 @@
-import '../css/trt.css'
+import '../css/tst.css'
 import { AppBar, Toolbar, Typography, makeStyles, Button } from "@material-ui/core";
 import { Link as RouterLink } from "react-router-dom";
 
@@ -70,7 +70,7 @@ export default function Header() {
 
   const trtLogo = (
     <Typography variant="h6" component="h1" className={logo}>
-      travel replacement threshold
+      travel substitution threshold
     </Typography>
   );
 
