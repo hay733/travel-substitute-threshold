@@ -18,11 +18,22 @@ const useStyles = makeStyles({
     minWidth: 650,
     backgroundColor: "#A2B6E7",
   },
+  headerCell: {
+    fontFamily: "Open Sans, sans-serif", 
+    color: "white",
+    backgroundColor: "#2E3338",
+    fontWeight: 710,
+    fontSize: 23,
+    borderColor: "#1E2124",
+    borderBottomWidth: "1px",
+  },
   tableCell: {
     fontFamily: "Open Sans, sans-serif", 
     color: "#1E2124",
     fontWeight: 700,
-    fontSize: 20,
+    fontSize: 19,
+    borderColor: "#1E2124",
+    borderBottomWidth: "1px",
   },
 });
 
@@ -62,9 +73,9 @@ function DataTable() {
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell className={classes.tableCell}>Constructs</TableCell>
-            <TableCell align="right" className={classes.tableCell}>Degree Required</TableCell>
-            <TableCell align="right" className={classes.tableCell}>Recommendation</TableCell>
+            <TableCell className={classes.headerCell}>Constructs</TableCell>
+            <TableCell align="right" className={classes.headerCell}>Degree Required</TableCell>
+            <TableCell align="right" className={classes.headerCell}>Recommendation</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

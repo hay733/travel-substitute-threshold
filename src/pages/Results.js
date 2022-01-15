@@ -1,13 +1,14 @@
 import Header from './Header'
 import DataTable from './Table'
 
-import { makeStyles, withStyles, Button } from "@material-ui/core"
+import { makeStyles, withStyles} from "@material-ui/core"
 import React, { useEffect, useState } from 'react';
 import QuestionBoxes from './QuestionBoxes';
-import Box from "@material-ui/core/Box";
 import Dialog from "@material-ui/core/Dialog";
 import Typography from "@material-ui/core/Typography";
-import { ButtonGroup } from '@mui/material';
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import Box from '@mui/material/Box';
 
 /**
  * sets the css styles for the container sizes
@@ -37,16 +38,6 @@ const useStyles = makeStyles(() => ({
  * sets the css styles for the different components
  */
 const styles = theme => ({
-    whyButton: {
-        fontFamily: "Open Sans, sans-serif",
-        fontWeight: 700,
-        fontSize: "20px",
-        textTransform: "lowercase",
-      //   marginLeft: "45%",
-        color: "#FFFFEE",
-        backgroundColor: "#1E2124",
-        margin: "auto",
-      },
       mainWords: {
           fontFamily: "Open Sans, sans-serif",
           fontWeight: 700,
@@ -54,6 +45,15 @@ const styles = theme => ({
           margin: "25px",
           textAlign: "center",
           color: "#1E2124",
+      },
+      buttonStyles: {
+        fontFamily: "Open Sans, sans-serif", 
+        color: "#1E2124",
+        fontWeight: 700,
+        fontSize: 17,
+        borderColor: "#25292D",
+        borderBottomWidth: "1px",
+        textTransform: "lowercase",
       },
 });
 
@@ -128,11 +128,13 @@ class Results extends React.Component {
                     </Dialog>
                 </div>
 
+                <br></br>
                 {/* render the "next steps" buttongroup */}
-                <div style={{textAlign: "center"}}>
-                    <ButtonGroup variant="outlined" aria-label="text button group">
-                        <Button href="/about">more info</Button>
-                        <Button>anonymously contribute my data</Button>
+                
+                <div style={{textAlign: "center"}} className={classes.buttonStyles}>
+                    <ButtonGroup variant="outlined" aria-label="text button group" className={classes.buttonStyles}>
+                        <Button className={classes.buttonStyles} href="/about">more info</Button>
+                        <Button className={classes.buttonStyles} >anonymously contribute my data</Button>
                     </ButtonGroup>
                 </div>
           </>
