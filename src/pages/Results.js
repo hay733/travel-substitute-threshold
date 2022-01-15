@@ -88,11 +88,18 @@ class Results extends React.Component {
     openModal = (e, data) => {
         console.log(e);
         this.title = e.target.innerText;
-        var str = e.target.innerHTML;
-        str.replace("=", '');
-        this.description = str.replace(/<[^>]+>/g, '');
-        // this.description = substring(e.targt.innerHTML.indexOf('<') + 1);
-        this.setState({isOpen: true});
+        // If the user clicks a button, do NOT open the modal
+        if (e.target.innerText == 'LOW' || e.target.innerText == 'MEDIUM' || e.target.innerText == 'HIGH') {
+            this.setState({isOpen: false});
+        }
+        else {
+            this.setState({isOpen: true});
+        }
+        // var str = e.target.innerHTML;
+        // str.replace("=", '');
+        // this.description = str.replace(/<[^>]+>/g, '');
+        // // this.description = substring(e.targt.innerHTML.indexOf('<') + 1);
+        
     }
 
     //closes the popup
@@ -117,8 +124,7 @@ class Results extends React.Component {
                     {/* generates the construct def popup */}
                     <Dialog open={this.state.isOpen} onClose={this.closeModal} maxWidth='md' fullWidth={true}>
                         <Typography margin='10%' align='center'>
-                            <h2>{this.title}</h2>
-                            <p>{this.description}</p>
+                
                         </Typography>
                         <Button onClick={this.closeModal}>Close</Button>
                     </Dialog>
