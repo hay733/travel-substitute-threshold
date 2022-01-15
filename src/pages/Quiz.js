@@ -47,7 +47,7 @@ function Quiz() {
             <body className={container}>
                 <br></br><br></br><br></br><br></br><br></br>
                 <h2 className={mainWords}>
-                    Find your travel replacement threshold
+                    Find your travel substitution threshold
                 </h2>
                 <br></br>
                 <Button variant="contained" /*color="primary"*/ className={quizButton} href="/questions">
