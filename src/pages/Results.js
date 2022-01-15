@@ -6,6 +6,10 @@ import React, { useEffect, useState } from 'react';
 import QuestionBoxes from './QuestionBoxes';
 import Box from "@material-ui/core/Box";
 import Dialog from "@material-ui/core/Dialog";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
 import Typography from "@material-ui/core/Typography";
 import { ButtonGroup } from '@mui/material';
 
@@ -65,6 +69,8 @@ class Results extends React.Component {
     state = {
         isActive: false,
         isOpen: false,
+        // dataContributed: false,
+        dataContributedPopup: false,
         title: null, 
         description: null
     };
@@ -105,7 +111,15 @@ class Results extends React.Component {
     closeModal = () => {
         this.setState({isOpen: false});
     }
-
+    /**
+     * Contributes the user's data when clicked
+     */
+    contributeData = () => {
+        this.setState({dataContributedPopup: true});
+    }
+    closeContributeData = () => {
+        this.setState({dataContributedPopup: false});
+    }
     render () {
         const { classes } = this.props;
         return (
@@ -132,7 +146,16 @@ class Results extends React.Component {
                 <div style={{textAlign: "center"}}>
                     <ButtonGroup variant="outlined" aria-label="text button group">
                         <Button href="/about">more info</Button>
-                        <Button>anonymously contribute my data</Button>
+                        <Button onClick={this.contributeData}>anonymously contribute my data</Button>
+                        <Dialog open={this.state.dataContributedPopup} onClose={this.closeContributeData}>
+                            <DialogTitle>Success</DialogTitle>
+                            <DialogContent>
+                                <DialogContentText>
+                                    Your data has been successfully contributed. Thank you.
+                                </DialogContentText>
+                            </DialogContent>
+                            <Button onClick={this.closeContributeData}>Close</Button>
+                        </Dialog>
                     </ButtonGroup>
                 </div>
           </>
