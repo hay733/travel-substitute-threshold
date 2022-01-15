@@ -1,5 +1,5 @@
 import React from 'react'
-import { makeStyles, Typography } from "@material-ui/core"
+import { makeStyles, Typography, Button } from "@material-ui/core"
 import { styled } from '@mui/material/styles';
 import FormLabel from '@material-ui/core/FormLabel'
 import FormControl from '@material-ui/core/FormControl'   
@@ -8,6 +8,11 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import Checkbox from '@material-ui/core/Checkbox'
 import Divider from '@mui/material/Divider';
+import Dialog from "@material-ui/core/Dialog";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
 
 /**
  * constant that sets the styling for different types of text
@@ -87,6 +92,7 @@ const themeStyles = makeStyles((theme) => ({
     }
 }));
 
+
 // function SetData(questions, ){
 //     if (questions.state.share) 
 //     return null;
@@ -113,6 +119,7 @@ function QuestionBoxes() {
         nreal: false, sreal: false, vreal: false, notARVR: false,
         ncam: false, nrcam: false, rcam: false, nottel: false,
         speak: false, lcomms: false, eapub: false, mienv: false, noint: false,
+        isOpen: false, title: null
     });
     
     //handles question box toggle changes
@@ -133,7 +140,22 @@ function QuestionBoxes() {
         ncam, nrcam, rcam, nottel, // cameras
         speak, lcomms, eapub, mienv, noint, // how interacting
     } = state;
-
+/**
+     * Opens the popup of the corresponding table cell
+     * NOTE: does not open popup when a "degree" button is clicked
+     * @param {*} e 
+     */
+    const openModal = (e) => {
+        state.title = e.target.innerText;  
+        console.log(state.title);
+        setState({isOpen: true});
+    }
+    /**
+     * Closes the popup 
+     */
+    const closeModal = () => {
+        setState({isOpen: false});
+    }
     return(
         <Root>
         <div>
@@ -435,7 +457,7 @@ function QuestionBoxes() {
                 </FormControl>
             </div>
 
-            <Divider textAlign="right" className={divWords}>usability</Divider>
+            <Divider textAlign="right" className={divWords} onClick={openModal}>usability</Divider>
             {/* what need to access */}
             <div className={classes.root}>
                 <FormControl component="fieldset" className={classes.formControl}>
@@ -466,6 +488,19 @@ function QuestionBoxes() {
                     <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
                 </FormControl>
             </div>
+            {/* generates the construct def popup */}
+            <div>
+                <Dialog open={state.isOpen} onClose={openModal} maxWidth='md' fullWidth={true}>
+                    <DialogTitle>{state.title}</DialogTitle>
+                    <DialogContent>
+                        <DialogContentText>
+                            Description
+                        </DialogContentText>
+                    </DialogContent>
+                    <Button onClick={closeModal}>Close</Button>
+                </Dialog>
+            </div>
+ 
         </div>
         </Root>
     );

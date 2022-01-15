@@ -4,14 +4,9 @@ import DataTable from './Table'
 import { makeStyles, withStyles, Button } from "@material-ui/core"
 import React, { useEffect, useState } from 'react';
 import QuestionBoxes from './QuestionBoxes';
-import Modal from '@mui/material/Modal';
 import Box from "@material-ui/core/Box";
 import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import Slide from "@material-ui/core/Slide";
 import { ButtonGroup } from '@mui/material';
 
 /**
@@ -84,8 +79,12 @@ class Results extends React.Component {
         this.setState({isActive: false});
     };
 
-    //opens the popup
-    openModal = (e, data) => {
+    /**
+     * Opens the popup of the corresponding table cell
+     * NOTE: does not open popup when a "degree" button is clicked
+     * @param {*} e 
+     */
+    openModal = (e) => {
         console.log(e);
         this.title = e.target.innerText;
         // If the user clicks a button, do NOT open the modal
@@ -98,11 +97,11 @@ class Results extends React.Component {
         // var str = e.target.innerHTML;
         // str.replace("=", '');
         // this.description = str.replace(/<[^>]+>/g, '');
-        // // this.description = substring(e.targt.innerHTML.indexOf('<') + 1);
-        
+        // // this.description = substring(e.targt.innerHTML.indexOf('<') + 1);   
     }
-
-    //closes the popup
+    /**
+     * Closes the popup 
+     */
     closeModal = () => {
         this.setState({isOpen: false});
     }
@@ -124,7 +123,6 @@ class Results extends React.Component {
                     {/* generates the construct def popup */}
                     <Dialog open={this.state.isOpen} onClose={this.closeModal} maxWidth='md' fullWidth={true}>
                         <Typography margin='10%' align='center'>
-                
                         </Typography>
                         <Button onClick={this.closeModal}>Close</Button>
                     </Dialog>

@@ -2,6 +2,8 @@ import React from 'react'
 import { withStyles, Button } from "@material-ui/core"
 import Header from './Header'
 import QuestionBoxes from './QuestionBoxes'
+import Dialog from "@material-ui/core/Dialog";
+import Typography from "@material-ui/core/Typography";
 import { render } from '@testing-library/react';
 
 /**
@@ -39,7 +41,22 @@ class Questions extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            isOpen: false,
+            title: null
         };
+    }
+    //opens the popup
+    openModal = (e, data) => {
+        console.log(e);
+        this.title = e.target.innerText;
+        // var str = e.target.innerHTML;
+        // str.replace("=", '');
+        // this.description = str.replace(/<[^>]+>/g, '');
+        // this.description = substring(e.targt.innerHTML.indexOf('<') + 1); 
+        }
+    //closes the popup
+    closeModal = () => {
+        this.setState({isOpen: false});
     }
 
     render() {
