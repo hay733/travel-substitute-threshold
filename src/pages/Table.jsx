@@ -72,8 +72,8 @@ function DataTable() {
           {rows.map((row) => (
             <TableRow key={row.name}>
               <TableCell component="th" scope="row" className={classes.tableCell} description={row.description}>
-                {row.constructs}
-                <p id='construct' hidden>{row.description}</p>
+                <h3>{row.constructs}</h3>
+                <p>{row.description}</p>
               </TableCell>
               <TableCell align="right" className={classes.tableCell}>{row.degree}</TableCell>
               <TableCell align="right" className={classes.tableCell}>{row.recommendation}</TableCell>
