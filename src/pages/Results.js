@@ -1,14 +1,13 @@
 import Header from './Header'
 import DataTable from './Table'
 
-import { makeStyles, withStyles} from "@material-ui/core"
+import { makeStyles, withStyles, Button } from "@material-ui/core"
 import React, { useEffect, useState } from 'react';
 import QuestionBoxes from './QuestionBoxes';
+import Box from "@material-ui/core/Box";
 import Dialog from "@material-ui/core/Dialog";
 import Typography from "@material-ui/core/Typography";
-import Button from '@mui/material/Button';
-import ButtonGroup from '@mui/material/ButtonGroup';
-import Box from '@mui/material/Box';
+import { ButtonGroup } from '@mui/material';
 
 /**
  * sets the css styles for the container sizes
@@ -131,7 +130,7 @@ class Results extends React.Component {
                 <br></br>
                 {/* render the "next steps" buttongroup */}
                 
-                <div style={{textAlign: "center"}} className={classes.buttonStyles}>
+                <div style={{textAlign: "center"}} >
                     <ButtonGroup variant="outlined" aria-label="text button group" className={classes.buttonStyles}>
                         <Button className={classes.buttonStyles} href="/about">more info</Button>
                         <Button className={classes.buttonStyles} >anonymously contribute my data</Button>
