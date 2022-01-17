@@ -69,10 +69,9 @@ class Results extends React.Component {
     state = {
         isActive: false,
         isOpen: false,
-        // dataContributed: false,
         dataContributedPopup: false,
         title: null, 
-        description: null
+        definition: null
     };
 
     //shows the table
@@ -91,19 +90,23 @@ class Results extends React.Component {
      * @param {*} e 
      */
     openModal = (e) => {
-        console.log(e);
-        this.title = e.target.innerText;
+        //console.log(e);
+        //this.title = e.target.innerText;
+        this.definition = e.target;
         // If the user clicks a button, do NOT open the modal
         if (e.target.innerText == 'LOW' || e.target.innerText == 'MEDIUM' || e.target.innerText == 'HIGH') {
             this.setState({isOpen: false});
         }
         else {
             this.setState({isOpen: true});
+            var str = e.target.innerHTML;
+            this.title = str.substring(0, str.indexOf('<'));
+            //console.log(str.substring(str.lastIndexOf('>') + 1, str.length - 1));
         }
         // var str = e.target.innerHTML;
         // str.replace("=", '');
-        // this.description = str.replace(/<[^>]+>/g, '');
-        // // this.description = substring(e.targt.innerHTML.indexOf('<') + 1);   
+        // this.definition = str.replace(/<[^>]+>/g, '');
+        // // this.definition = substring(e.targt.innerHTML.indexOf('<') + 1);   
     }
     /**
      * Closes the popup 
@@ -136,8 +139,12 @@ class Results extends React.Component {
                         
                     {/* generates the construct def popup */}
                     <Dialog open={this.state.isOpen} onClose={this.closeModal} maxWidth='md' fullWidth={true}>
-                        <Typography margin='10%' align='center'>
-                        </Typography>
+                        <DialogTitle margin='10%' align='center'>{this.title}</DialogTitle>
+                        <DialogContent>
+                            <DialogContentText margin='10%' align='center'>
+                                Description
+                            </DialogContentText>
+                        </DialogContent>
                         <Button onClick={this.closeModal}>Close</Button>
                     </Dialog>
                 </div>
@@ -147,6 +154,7 @@ class Results extends React.Component {
                     <ButtonGroup variant="outlined" aria-label="text button group">
                         <Button href="/about">more info</Button>
                         <Button onClick={this.contributeData}>anonymously contribute my data</Button>
+                        {/* open popup when data is successfully contributed */}
                         <Dialog open={this.state.dataContributedPopup} onClose={this.closeContributeData}>
                             <DialogTitle>Success</DialogTitle>
                             <DialogContent>

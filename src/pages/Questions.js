@@ -5,7 +5,10 @@ import QuestionBoxes from './QuestionBoxes'
 import Dialog from "@material-ui/core/Dialog";
 import Typography from "@material-ui/core/Typography";
 import { render } from '@testing-library/react';
-
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
 /**
  * css constant styles for different components
  * @param {*} theme 
@@ -40,15 +43,16 @@ const styles = theme => ({
 class Questions extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isOpen: false,
-            title: null
-        };
     }
+    state = {
+        isOpen: false,
+        title: null
+    };
     //opens the popup
-    openModal = (e, data) => {
+    openModal = (e) => {
         console.log(e);
-        this.title = e.target.innerText;
+        // this.title = e.target.innerText;
+        this.setState({isOpen: true});
         // var str = e.target.innerHTML;
         // str.replace("=", '');
         // this.description = str.replace(/<[^>]+>/g, '');
@@ -66,7 +70,7 @@ class Questions extends React.Component {
                 <Header />
                 <body className={classes.container} style={{ fontFamily: "Open Sans, sans-serif"  }}>
                     <br></br><br></br>
-                    <QuestionBoxes />
+                    <QuestionBoxes onClick={this.openModal}/>
                     <br></br><br></br>
                     <div style={{textAlign: 'center'}}>
                         <Button variant="contained" /*color="primary"*/ className={classes.submitButton} href="/results">
@@ -76,6 +80,7 @@ class Questions extends React.Component {
                     <br></br><br></br><br></br><br></br>
                 </body>
             </div>
+
         );
     }
 }

@@ -121,7 +121,6 @@ function QuestionBoxes() {
         speak: false, lcomms: false, eapub: false, mienv: false, noint: false,
         isOpen: false, title: null
     });
-    
     //handles question box toggle changes
     const handleChange = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });
@@ -140,14 +139,13 @@ function QuestionBoxes() {
         ncam, nrcam, rcam, nottel, // cameras
         speak, lcomms, eapub, mienv, noint, // how interacting
     } = state;
-/**
+    /**
      * Opens the popup of the corresponding table cell
      * NOTE: does not open popup when a "degree" button is clicked
      * @param {*} e 
      */
     const openModal = (e) => {
-        state.title = e.target.innerText;  
-        console.log(state.title);
+        state.title = e.target.outerText; 
         setState({isOpen: true});
     }
     /**
@@ -214,7 +212,7 @@ function QuestionBoxes() {
                 </FormControl>
             </div>
 
-            <Divider textAlign="right" className={divWords}>engagement</Divider>
+            <Divider textAlign="right" className={divWords} onClick={openModal}>engagement</Divider>
             {/* degree of participation */}
             <div className={classes.root}>
                 <FormControl component="fieldset" className={classes.formControl}>
@@ -268,7 +266,7 @@ function QuestionBoxes() {
                 </FormControl>
             </div>
             
-            <Divider textAlign="right" className={divWords}>knowledge</Divider>
+            <Divider textAlign="right" className={divWords} onClick={openModal}>knowledge</Divider>
             {/* //  What is the goal/focus  */}
             <div className={classes.root}>
                 <br></br><br></br><br></br><br></br><br></br>
@@ -365,7 +363,7 @@ function QuestionBoxes() {
                 </FormControl>
             </div>
 
-            <Divider textAlign="right" className={divWords}>rapport</Divider>
+            <Divider textAlign="right" className={divWords} onClick={openModal}>rapport</Divider>
             {/* who is other part */}
             <div className={classes.root}>
                 <FormControl component="fieldset" className={classes.formControl}>
@@ -427,7 +425,7 @@ function QuestionBoxes() {
                             label={<Typography className={answerWords}>Family</Typography>}
                         />
                     </FormGroup>
-                    <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
+                    <FormHelperText className={warningWords} onClick={openModal}>Choose all that apply</FormHelperText>
                 </FormControl>
             </div>
             {/* prev num meetings */}
@@ -488,20 +486,16 @@ function QuestionBoxes() {
                     <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
                 </FormControl>
             </div>
-            {/* generates the construct def popup */}
-            <div>
-                <Dialog open={state.isOpen} onClose={openModal} maxWidth='md' fullWidth={true}>
-                    <DialogTitle>{state.title}</DialogTitle>
-                    <DialogContent>
-                        <DialogContentText>
-                            Description
-                        </DialogContentText>
-                    </DialogContent>
-                    <Button onClick={closeModal}>Close</Button>
-                </Dialog>
-            </div>
- 
         </div>
+        {/* generates the construct def popup */}
+        <Dialog open={state.isOpen} onClose={closeModal} maxWidth='md' fullWidth={true}>
+            <DialogTitle margin='10%' align='center'>{state.title}</DialogTitle>
+            <DialogContent>
+                <DialogContentText margin='10%' align='center'>
+                </DialogContentText>
+                </DialogContent>
+                <Button onClick={closeModal}>Close</Button>
+        </Dialog>
         </Root>
     );
 }

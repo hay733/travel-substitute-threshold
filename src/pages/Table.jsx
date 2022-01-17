@@ -33,22 +33,22 @@ const useStyles = makeStyles({
  * @param {*} recommendation the type of meeting recommended based off of the degree and construct
  * @returns the data row generated from the categories
  */
-function createData(constructs, degree, recommendation, description) {
-  return { constructs, degree, recommendation, description };
+function createData(constructs, degree, recommendation, definition, description) {
+  return { constructs, degree, recommendation, definition, description };
 }
 
 /**
  * creates the table data as constant values
  */
 const rows = [
-  createData('Engagement', <ToggleButtons />, 'Virtual Reality (XR)', 'The degree of interaction needed for a task to be successful'),
-  createData('Knowledge', <ToggleButtons />, 'Teleconference', 'What participants know about the meeting topic'),
-  createData('Mental Workload', <ToggleButtons />, 'Face-to-Face or Teleconference'),
-  createData('Performance', <ToggleButtons />, 'Virtual Reality (XR) or Face-to-Face', 'The ability for a person to successfully perform a task'),
-  createData('Rapport', <ToggleButtons />, 'Virtual Reality (XR)', 'A relationship defined by a deep sense of empathy and community'),
-  createData('Shared Situational Awareness', <ToggleButtons />, 'Virtual Reality (XR)', 'Multiple people having a common idea about what is happening'),
-  createData('Trust', <ToggleButtons />, 'Teleconference', 'The belief that another person is honest and reliable'),
-  createData('Usability', <ToggleButtons />, 'Teleconference or Virtual Reality (XR)', 'The ability of a process to be performed simply and effectively'),
+  createData('Engagement', <ToggleButtons />, 'Virtual Reality (XR)', 'The degree of interaction needed for a task to be successful', 'Engagement Description'),
+  createData('Knowledge', <ToggleButtons />, 'Teleconference', 'What participants know about the meeting topic', 'Knowledge Description'),
+  createData('Mental Workload', <ToggleButtons />, 'Face-to-Face or Teleconference', 'The effort or cost incurred by the human operator to perform the task using the provided tools', 'Mental Workload Description'),
+  createData('Performance', <ToggleButtons />, 'Virtual Reality (XR) or Face-to-Face', 'The ability for a person to successfully perform a task', 'Performance Description'),
+  createData('Rapport', <ToggleButtons />, 'Virtual Reality (XR)', 'A relationship defined by a deep sense of empathy and community', 'Rapport Description'),
+  createData('Shared Situational Awareness', <ToggleButtons />, 'Virtual Reality (XR)', 'Multiple people having a common idea about what is happening', 'SSA Description'),
+  createData('Trust', <ToggleButtons />, 'Teleconference', 'The belief that another person is honest and reliable', 'Trust Description'),
+  createData('Usability', <ToggleButtons />, 'Teleconference or Virtual Reality (XR)', 'The ability of a process to be performed simply and effectively', 'Usability Description'),
 ];
 
 /**
@@ -70,9 +70,11 @@ function DataTable() {
         <TableBody>
           {rows.map((row) => (
             <TableRow key={row.name}>
-              <TableCell component="th" scope="row" className={classes.tableCell} description={row.description}>
-                <h3>{row.constructs}</h3>
-                <p>{row.description}</p>
+              <TableCell component="th" scope="row" className={classes.tableCell} description={row.definition}>
+                {row.constructs} 
+                <br></br>
+                <br></br>
+                {row.definition}
               </TableCell>
               <TableCell align="right" className={classes.tableCell}>{row.degree}</TableCell>
               <TableCell align="right" className={classes.tableCell}>{row.recommendation}</TableCell>
