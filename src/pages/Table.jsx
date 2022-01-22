@@ -24,6 +24,7 @@ const useStyles = makeStyles({
     fontWeight: 700,
     fontSize: 20,
   },
+
 });
 
 /**
@@ -71,10 +72,11 @@ function DataTable() {
           {rows.map((row) => (
             <TableRow key={row.name}>
               <TableCell component="th" scope="row" className={classes.tableCell} description={row.definition}>
-                {row.constructs} 
+                {row.constructs}
                 <br></br>
                 <br></br>
                 {row.definition}
+                <p hidden='true' class='description'>{row.description}</p>
               </TableCell>
               <TableCell align="right" className={classes.tableCell}>{row.degree}</TableCell>
               <TableCell align="right" className={classes.tableCell}>{row.recommendation}</TableCell>

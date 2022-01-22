@@ -71,7 +71,8 @@ class Results extends React.Component {
         isOpen: false,
         dataContributedPopup: false,
         title: null, 
-        definition: null
+        definition: null,
+        description: null
     };
 
     //shows the table
@@ -90,7 +91,7 @@ class Results extends React.Component {
      * @param {*} e 
      */
     openModal = (e) => {
-        //console.log(e);
+        //console.log(e.target.innerHTML);
         //this.title = e.target.innerText;
         this.definition = e.target;
         // If the user clicks a button, do NOT open the modal
@@ -99,14 +100,19 @@ class Results extends React.Component {
         }
         else {
             this.setState({isOpen: true});
-            var str = e.target.innerHTML;
-            this.title = str.substring(0, str.indexOf('<'));
-            //console.log(str.substring(str.lastIndexOf('>') + 1, str.length - 1));
+            var titleString = e.target.innerHTML;
+            this.title = titleString.substring(0, titleString.indexOf('<'));
+            var descriptionStr = e.target.innerHTML;
+            //descriptionStr = descriptionStr.substring(0, descriptionStr.indexOf('<p>' + 1));
+            descriptionStr = descriptionStr.replace('<br>', '');
+            descriptionStr = descriptionStr.replace('<br>', '');
+            descriptionStr = descriptionStr.replace(this.title, '');
+            this.description = descriptionStr.substring(descriptionStr.indexOf('>') + 1, descriptionStr.lastIndexOf('<'));
         }
         // var str = e.target.innerHTML;
         // str.replace("=", '');
         // this.definition = str.replace(/<[^>]+>/g, '');
-        // // this.definition = substring(e.targt.innerHTML.indexOf('<') + 1);   
+        // this.definition = substring(e.targt.innerHTML.indexOf('<') + 1);   
     }
     /**
      * Closes the popup 
@@ -142,7 +148,7 @@ class Results extends React.Component {
                         <DialogTitle margin='10%' align='center'>{this.title}</DialogTitle>
                         <DialogContent>
                             <DialogContentText margin='10%' align='center'>
-                                Description
+                                {this.description}
                             </DialogContentText>
                         </DialogContent>
                         <Button onClick={this.closeModal}>Close</Button>

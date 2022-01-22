@@ -1,0 +1,19 @@
+/* @font-face { 
+    font-family: Arial, Helvetica, sans-serif;
+}  */
+
+/* imports the universal font for the site */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Work+Sans&display=swap');
+
+/* sets the background color for the whole site */
+body {
+	background-color: #A2B6E7;
+	/* color: #545F66; */
+}
+
+/* sets the width of the scrollbar */
+	body::-webkit-scrollbar { 
+		width: 0px;               /* width of the entire scrollbar */
+	}
+
+
