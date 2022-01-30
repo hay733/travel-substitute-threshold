@@ -101,7 +101,7 @@ const themeStyles = makeStyles((theme) => ({
 /**
  * @returns all the rendered questions and answers + dividers
  */
-function QuestionBoxes() {
+function RapportTrustQuestions() {
     //text styles call
     const { questionWords, answerWords,divWords, warningWords } = useStyles();
     //questions style call
@@ -500,4 +500,4 @@ function QuestionBoxes() {
     );
 }
 
-export default QuestionBoxes;
+export default RapportTrustQuestions;

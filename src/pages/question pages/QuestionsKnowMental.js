@@ -1,7 +1,7 @@
 import React from 'react'
 import { withStyles, Button, StepButton } from "@material-ui/core"
 import Header from '../Header'
-import QuestionBoxes from '../QuestionBoxes'
+import QuestionBoxes from '../constructQuestions/Usability'
 import { Step, Stepper, StepConnector, stepConnectorClasses } from "@material-ui/core"
 import { styled } from '@mui/material/styles';
 import Dialog from "@material-ui/core/Dialog";

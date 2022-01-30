@@ -101,7 +101,7 @@ const themeStyles = makeStyles((theme) => ({
 /**
  * @returns all the rendered questions and answers + dividers
  */
-function KnowledgeMentalWorkloadQuestions() {
+function UsabilityQuestions() {
     //text styles call
     const { questionWords, answerWords,divWords, warningWords } = useStyles();
     //questions style call
@@ -500,4 +500,4 @@ function KnowledgeMentalWorkloadQuestions() {
     );
 }
 
-export default KnowledgeMentalWorkloadQuestions;
+export default UsabilityQuestions;
