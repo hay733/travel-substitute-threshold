@@ -82,7 +82,7 @@ class QuestionsEngagementCopresenceSSA extends React.Component {
                 <Header />
                 <body className={classes.container} style={{ fontFamily: "Open Sans, sans-serif"  }}>
                     <br></br><br></br>
-                    <Stepper activeStep={4} alternativeLabel className={classes.stepper}>
+                    <Stepper activeStep={4} nonLinear alternativeLabel className={classes.stepper}>
                         <Step>
                             <StepButton href='/questions-knowledge_mentalWorkload'>knowledge & mental workload</StepButton>
                         </Step>

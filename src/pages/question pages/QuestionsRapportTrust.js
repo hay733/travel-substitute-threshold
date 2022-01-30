@@ -82,7 +82,7 @@ class QuestionsRapportTrust extends React.Component {
                 <Header />
                 <body className={classes.container} style={{ fontFamily: "Open Sans, sans-serif"  }}>
                     <br></br><br></br>
-                    <Stepper activeStep={3} alternativeLabel className={classes.stepper}>
+                    <Stepper nonLinear activeStep={3} alternativeLabel className={classes.stepper}>
                         <Step>
                             <StepButton href='/questions-knowledge_mentalWorkload'>knowledge & mental workload</StepButton>
                         </Step>
