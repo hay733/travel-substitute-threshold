@@ -1,7 +1,7 @@
 import React from 'react'
 import { withStyles, Button, StepButton } from "@material-ui/core"
 import Header from '../Header'
-import QuestionBoxes from '../constructQuestions/Usability'
+import EngagementCopresenceSSAQuestions from '../constructQuestions/EngagementCopresenceSSA'
 import { Step, Stepper, StepConnector, stepConnectorClasses } from "@material-ui/core"
 import { styled } from '@mui/material/styles';
 import Dialog from "@material-ui/core/Dialog";
@@ -100,7 +100,7 @@ class QuestionsEngagementCopresenceSSA extends React.Component {
                         </Step>
                     </Stepper>
 
-                    <QuestionBoxes onClick={this.openModal}/>
+                    <EngagementCopresenceSSAQuestions onClick={this.openModal}/>
                     <br></br><br></br>
 
                     <Button className={classes.submitButton} href="/questions-rapport_trust">
