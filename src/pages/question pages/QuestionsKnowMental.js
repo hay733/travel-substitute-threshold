@@ -1,7 +1,9 @@
 import React from 'react'
-import { withStyles, Button } from "@material-ui/core"
-import Header from './Header'
-import QuestionBoxes from './QuestionBoxes'
+import { withStyles, Button, StepButton } from "@material-ui/core"
+import Header from '../Header'
+import QuestionBoxes from '../QuestionBoxes'
+import { Step, Stepper, StepConnector, stepConnectorClasses } from "@material-ui/core"
+import { styled } from '@mui/material/styles';
 import Dialog from "@material-ui/core/Dialog";
 import Typography from "@material-ui/core/Typography";
 import { render } from '@testing-library/react';
@@ -21,7 +23,7 @@ const styles = theme => ({
       fontSize: "25px",
       textTransform: "lowercase",
     //   marginLeft: "55%",
-      marginLower: "10%",
+    //   marginLower: "15%",
       color: "#FFFFEE",
       backgroundColor: "#1E2124",
     },
@@ -34,13 +36,23 @@ const styles = theme => ({
         display: "fixed",
         // alignItems: "center",
     },
+    stepper: {
+        backgroundColor: "#A2B6E7",
+        marginLeft: "-7%",
+        color: "black",
+        fontFamily: "Open Sans, sans-serif",
+        fontWeight: 700,
+        fontSize: "30px",
+        textTransform: "lowercase",
+        
+    }
 });
 
 /**
  * renders the questions and the submit button
  * calls the questionBoxes component which renders all the quiz questions
  */
-class Questions extends React.Component {
+class QuestionsKnowMental extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -64,20 +76,40 @@ class Questions extends React.Component {
     }
 
     render() {
-        const { classes } = this.props;
+        const { classes, stepper } = this.props;
         return (
             <div>
                 <Header />
                 <body className={classes.container} style={{ fontFamily: "Open Sans, sans-serif"  }}>
                     <br></br><br></br>
+                    <Stepper activeStep={0} alternativeLabel className={classes.stepper}>
+                        <Step>
+                            <StepButton href='/questions-knowledge_mentalWorkload'>knowledge & mental workload</StepButton>
+                        </Step>
+                        <Step>
+                            <StepButton href='/questions-usability'>usability</StepButton>
+                        </Step>
+                        <Step>
+                            <StepButton href='/questions-performance'>performance</StepButton>
+                        </Step>
+                        <Step>
+                            <StepButton href='/questions-rapport_trust'>rapport & trust</StepButton>
+                        </Step>
+                        <Step>
+                            <StepButton href='/questions-engagement_copresence_ssa'>engagement, copresence, & shared situational awareness</StepButton>
+                        </Step>
+                    </Stepper>
+
                     <QuestionBoxes onClick={this.openModal}/>
                     <br></br><br></br>
-                    <div style={{textAlign: 'center'}}>
-                        <Button variant="contained" /*color="primary"*/ className={classes.submitButton} href="/results">
-                            Submit
-                        </Button>
-                    </div>
-                    <br></br><br></br><br></br><br></br>
+
+                    <Button className={classes.submitButton} href="/quiz">
+                        Back
+                    </Button>
+                    <Button className={classes.submitButton} style={{float: 'right'}} href="/questions-usability">
+                        Next
+                    </Button>
+                    <br></br><br></br><br></br>
                 </body>
             </div>
 
@@ -85,4 +117,4 @@ class Questions extends React.Component {
     }
 }
 
-export default withStyles(styles)(Questions);
+export default withStyles(styles)(QuestionsKnowMental);
