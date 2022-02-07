@@ -82,7 +82,7 @@ class QuestionsUsability extends React.Component {
                 <Header />
                 <body className={classes.container} style={{ fontFamily: "Open Sans, sans-serif"  }}>
                     <br></br><br></br>
-                    <Stepper nonLinear activeStep={1} alternativeLabel className={classes.stepper}>
+                    <Stepper nonlinear activeStep={1} alternativeLabel className={classes.stepper}>
                         <Step>
                             <StepButton href='/questions-knowledge_mentalWorkload'>knowledge & mental workload</StepButton>
                         </Step>
