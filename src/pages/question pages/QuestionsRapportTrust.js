@@ -82,15 +82,12 @@ class QuestionsRapportTrust extends React.Component {
                 <Header />
                 <body className={classes.container} style={{ fontFamily: "Open Sans, sans-serif"  }}>
                     <br></br><br></br>
-                    <Stepper nonLinear activeStep={3} alternativeLabel className={classes.stepper}>
+                    <Stepper activeStep={2} nonLinear alternativeLabel className={classes.stepper}>
                         <Step>
                             <StepButton href='/questions-knowledge_mentalWorkload'>knowledge & mental workload</StepButton>
                         </Step>
                         <Step>
                             <StepButton href='/questions-usability'>usability</StepButton>
-                        </Step>
-                        <Step>
-                            <StepButton href='/questions-performance'>performance</StepButton>
                         </Step>
                         <Step>
                             <StepButton href='/questions-rapport_trust'>rapport & trust</StepButton>
@@ -104,7 +101,7 @@ class QuestionsRapportTrust extends React.Component {
                     <br></br><br></br>
                     
 
-                    <Button className={classes.submitButton} href="/questions-performance">
+                    <Button className={classes.submitButton} href="/questions-usability">
                         Back
                     </Button>
                     <Button className={classes.submitButton} style={{float: 'right'}} href="/questions-engagement_copresence_ssa">

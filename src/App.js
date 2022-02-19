@@ -8,8 +8,7 @@ import { Route } from 'react-router-dom'
 
 import QuestionsKnowMental from './pages/question pages/QuestionsKnowMental'
 import QuestionsEngagementCopresenceSSA from './pages/question pages/QuestionsEngagementCopresenceSSA'
-import QuestionsUsability from './pages/question pages/QuestionsKnowMental'
-import QuestionsPerformance from './pages/question pages/QuestionsPerformance'
+import QuestionsUsability from './pages/question pages/QuestionsUsability'
 import QuestionsRapportTrust from './pages/question pages/QuestionsRapportTrust'
 
 // import {Route} from "react-router-dom"
@@ -24,7 +23,6 @@ function App() {
       {/* set stepper pages */}
       <Route exact path="/questions-knowledge_mentalWorkload" component={QuestionsKnowMental} />
       <Route exact path="/questions-usability" component={QuestionsUsability} />
-      <Route exact path="/questions-performance" component={QuestionsPerformance} />
       <Route exact path="/questions-rapport_trust" component={QuestionsRapportTrust} />
       <Route exact path="/questions-engagement_copresence_ssa" component={QuestionsEngagementCopresenceSSA} />
 

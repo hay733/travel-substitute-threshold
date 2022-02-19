@@ -84,15 +84,12 @@ class QuestionsKnowMental extends React.Component {
                 <Header />
                 <body className={classes.container} style={{ fontFamily: "Open Sans, sans-serif"  }}>
                     <br></br><br></br>
-                    <Stepper nonLinear activeStep={0} alternativeLabel className={classes.stepper}>
+                    <Stepper activeStep={0} nonLinear alternativeLabel className={classes.stepper}>
                         <Step>
                             <StepButton href='/questions-knowledge_mentalWorkload'>knowledge & mental workload</StepButton>
                         </Step>
                         <Step>
                             <StepButton href='/questions-usability'>usability</StepButton>
-                        </Step>
-                        <Step>
-                            <StepButton href='/questions-performance'>performance</StepButton>
                         </Step>
                         <Step>
                             <StepButton href='/questions-rapport_trust'>rapport & trust</StepButton>
