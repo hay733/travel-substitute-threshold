@@ -3,7 +3,7 @@ import DataTable from './Table'
 
 import { makeStyles, withStyles, Button } from "@material-ui/core"
 import React, { useEffect, useState } from 'react';
-import QuestionBoxes from './QuestionBoxes';
+import QuestionBoxes from './constructQuestions/Usability';
 import Box from "@material-ui/core/Box";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContentText from "@material-ui/core/DialogContentText";
