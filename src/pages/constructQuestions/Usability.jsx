@@ -13,6 +13,8 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
 
 /**
  * constant that sets the styling for different types of text
@@ -21,7 +23,7 @@ const useStyles = makeStyles(() => ({
     questionWords: {
         fontFamily: "Open Sans, sans-serif",
         fontWeight: 700,
-        fontSize: "30px",
+        fontSize: "27px",
         // textTransform: "lowercase",
         // margin: "25px",
         // textAlign: "center",
@@ -129,16 +131,6 @@ function UsabilityQuestions() {
     //sets the questions
     const { 
         q1a1, q1a2, q1a3, q1a4, q1a5, // What will you need to access in order to meet the goals of your meeting? 
-        q2a1, q2a2, // Do all participants have access to the necessary equipment for VR/AR? 
-        q3a1, q3a2, // Do all participants have access to the necessary equipment for Zoom?  
-        q4a1, q4a2, q4a3, // How skilled are the participants at using the Zoom platform? 
-        q5a1, q5a2, q5a3, // How skilled are the participants at using the AR/VR? 
-        q6a1, q6a2, q6a3, // How skilled are most participants at communicating?
-        q7a1, q7a2, q7a3, // How much training will the participants need to be up to date with the technologies used? 
-        q8a1, q8a2, q8a3, // How easy will it be for most participants to accomplish the task? 
-        q9a1, q9a2, // Do all participants have a reliable broadband connection? 
-        q10a1, q10a2, q10a3, q10a4, // How feasible is it for participants to travel? 
-        q11a1, q11a2, q11a3, q11a4, // Can all participants travel? 
     } = state;
     /**
      * Opens the popup of the corresponding table cell
@@ -159,7 +151,7 @@ function UsabilityQuestions() {
         <Root>
         <div>
 
-            <Divider textAlign="right" className={divWords}>Usability</Divider>
+            <Divider textAlign="right" className={divWords}>usability</Divider>
             {/* What will you need to access in order to meet the goals of your meeting? */}
             <div className={classes.root}>
                 <FormControl component="fieldset" className={classes.formControl}>
@@ -195,17 +187,16 @@ function UsabilityQuestions() {
                 <FormControl component="fieldset" className={classes.formControl}>
                     <FormLabel className={questionWords} component="legend">Do all participants have access to the necessary equipment for VR/AR? </FormLabel>
                     <br></br>
-                    <FormGroup>
+                    <RadioGroup aria-labelledby="demo-radio-buttons-group-label" name="radio-buttons-group">
                         <FormControlLabel
-                            control={<Checkbox checked={q2a1} onChange={handleChange} name="q2a1" style={{ color: "white" }} />}
+                            value="q2a1" control={<Radio />}
                             label={<Typography className={answerWords}>yes</Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q2a2} onChange={handleChange} name="q2a2" style={{ color: "white" }} />}
+                            value="q2a2" control={<Radio />}
                             label={<Typography className={answerWords}>no</Typography>}
                         />
-                    </FormGroup>
-                    <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
+                    </RadioGroup>
                 </FormControl>
             </div>
             {/* Do all participants have access to the necessary equipment for Zoom?  */}
@@ -213,17 +204,16 @@ function UsabilityQuestions() {
                 <FormControl component="fieldset" className={classes.formControl}>
                     <FormLabel className={questionWords} component="legend">Do all participants have access to the necessary equipment for Zoom? </FormLabel>
                     <br></br>
-                    <FormGroup>
+                    <RadioGroup aria-labelledby="demo-radio-buttons-group-label" name="radio-buttons-group">
                         <FormControlLabel
-                            control={<Checkbox checked={q3a1} onChange={handleChange} name="q3a1" style={{ color: "white" }} />}
+                            value="q3a1" control={<Radio />}
                             label={<Typography className={answerWords}>yes</Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q3a2} onChange={handleChange} name="q3a2" style={{ color: "white" }} />}
+                            value="q3a2" control={<Radio />}
                             label={<Typography className={answerWords}>no</Typography>}
                         />
-                    </FormGroup>
-                    <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
+                    </RadioGroup>
                 </FormControl>
             </div>
             {/* How skilled are the participants at using the Zoom platform?  */}
@@ -231,21 +221,20 @@ function UsabilityQuestions() {
                 <FormControl component="fieldset" className={classes.formControl}>
                     <FormLabel className={questionWords} component="legend">How skilled are the participants at using the Zoom platform? </FormLabel>
                     <br></br>
-                    <FormGroup>
+                    <RadioGroup aria-labelledby="demo-radio-buttons-group-label" name="radio-buttons-group">
                         <FormControlLabel
-                            control={<Checkbox checked={q4a1} onChange={handleChange} name="q4a1" style={{ color: "white" }} />}
+                            value="q4a1" control={<Radio />}
                             label={<Typography className={answerWords}>no previous experience</Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q4a2} onChange={handleChange} name="q4a2" style={{ color: "white" }} />}
+                            value="q4a2" control={<Radio />}
                             label={<Typography className={answerWords}>familiar</Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q4a3} onChange={handleChange} name="q4a3" style={{ color: "white" }} />}
+                            value="q4a3" control={<Radio />}
                             label={<Typography className={answerWords}>experienced</Typography>}
                         />
-                    </FormGroup>
-                    <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
+                    </RadioGroup>
                 </FormControl>
             </div>
             {/* //  How skilled are the participants at using the AR/VR?   */}
@@ -254,21 +243,20 @@ function UsabilityQuestions() {
                 <FormControl component="fieldset" className={classes.formControl}>
                     <FormLabel className={questionWords} component="legend">How skilled are the participants at using the AR/VR? </FormLabel>
                     <br></br>
-                    <FormGroup>
+                    <RadioGroup aria-labelledby="demo-radio-buttons-group-label" name="radio-buttons-group">
                         <FormControlLabel
-                            control={<Checkbox checked={q5a1} onChange={handleChange} name="q5a1" style={{ color: "white" }} />}
+                            value="q5a1" control={<Radio />}
                             label={<Typography className={answerWords}>no previous experience</Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q5a2} onChange={handleChange} name="q5a2" style={{ color: "white" }} />}
+                            value="q5a2" control={<Radio />}
                             label={<Typography className={answerWords}>familiar</Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q5a3} onChange={handleChange} name="q5a3" style={{ color: "white" }} />}
+                            value="q5a3" control={<Radio />}
                             label={<Typography className={answerWords}>experienced</Typography>}
                         />
-                    </FormGroup>
-                    <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
+                    </RadioGroup>
                 </FormControl>
             </div>
             {/* How skilled are most participants at communicating? */}
@@ -276,21 +264,20 @@ function UsabilityQuestions() {
                 <FormControl component="fieldset" className={classes.formControl}>
                     <FormLabel className={questionWords} component="legend">How skilled are most participants at communicating?</FormLabel>
                     <br></br>
-                    <FormGroup>
+                    <RadioGroup aria-labelledby="demo-radio-buttons-group-label" name="radio-buttons-group">
                         <FormControlLabel
-                            control={<Checkbox checked={q6a1} onChange={handleChange} name="q6a1" style={{ color: "white" }} />}
+                            value="q6a1" control={<Radio />}
                             label={<Typography className={answerWords}>low</Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q6a2} onChange={handleChange} name="q6a2" style={{ color: "white" }} />}
+                            value="q6a2" control={<Radio />}
                             label={<Typography className={answerWords}>medium</Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q6a3} onChange={handleChange} name="q6a3" style={{ color: "white" }} />}
+                            value="q6a3" control={<Radio />}
                             label={<Typography className={answerWords}>high</Typography>}
                         />
-                    </FormGroup>
-                    <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
+                    </RadioGroup>
                 </FormControl>
             </div>
             {/* How much training will the participants need to be up to date with the technologies used?  */}
@@ -298,21 +285,20 @@ function UsabilityQuestions() {
                 <FormControl component="fieldset" className={classes.formControl}>
                     <FormLabel className={questionWords} component="legend">How much training will the participants need to be up to date with the technologies used?</FormLabel>
                     <br></br>
-                    <FormGroup>
+                    <RadioGroup aria-labelledby="demo-radio-buttons-group-label" name="radio-buttons-group">
                         <FormControlLabel
-                            control={<Checkbox checked={q7a1} onChange={handleChange} name="q7a1" style={{ color: "white" }} />}
+                            value="q7a1" control={<Radio />}
                             label={<Typography className={answerWords}>none</Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q7a2} onChange={handleChange} name="q7a2" style={{ color: "white" }} />}
+                            value="q7a2" control={<Radio />}
                             label={<Typography className={answerWords}>less than 1 hour</Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q7a3} onChange={handleChange} name="q7a3" style={{ color: "white" }} />}
+                            value="q7a3" control={<Radio />}
                             label={<Typography className={answerWords}>more than 1 hour</Typography>}
                         />
-                    </FormGroup>
-                    <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
+                    </RadioGroup>
                 </FormControl>
             </div>
             {/* How easy will it be for most participants to accomplish the task?  */}
@@ -320,21 +306,20 @@ function UsabilityQuestions() {
                 <FormControl component="fieldset" className={classes.formControl}>
                     <FormLabel className={questionWords} component="legend">How easy will it be for most participants to accomplish the task? </FormLabel>
                     <br></br>
-                    <FormGroup>
+                    <RadioGroup aria-labelledby="demo-radio-buttons-group-label" name="radio-buttons-group">
                         <FormControlLabel
-                            control={<Checkbox checked={q8a1} onChange={handleChange} name="q8a1" style={{ color: "white" }} />}
+                            value="q8a1" control={<Radio />}
                             label={<Typography className={answerWords}>easy</Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q8a2} onChange={handleChange} name="q8a2" style={{ color: "white" }} />}
+                            value="q8a2" control={<Radio />}
                             label={<Typography className={answerWords}>moderate</Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q8a3} onChange={handleChange} name="q8a3" style={{ color: "white" }} />}
+                            value="q8a3" control={<Radio />}
                             label={<Typography className={answerWords}>difficult</Typography>}
                         />
-                    </FormGroup>
-                    <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
+                    </RadioGroup>
                 </FormControl>
             </div>
             {/* Do all participants have a reliable broadband connection?  */}
@@ -342,17 +327,16 @@ function UsabilityQuestions() {
                 <FormControl component="fieldset" className={classes.formControl}>
                     <FormLabel className={questionWords} component="legend">Do all participants have a reliable broadband connection? </FormLabel>
                     <br></br>
-                    <FormGroup>
+                    <RadioGroup aria-labelledby="demo-radio-buttons-group-label" name="radio-buttons-group">
                         <FormControlLabel
-                            control={<Checkbox checked={q9a1} onChange={handleChange} name="q9a1" style={{ color: "white" }} />}
+                            value="q9a1" control={<Radio />}
                             label={<Typography className={answerWords}>yes</Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q9a2} onChange={handleChange} name="q9a2" style={{ color: "white" }} />}
+                            value="q9a2" control={<Radio />}
                             label={<Typography className={answerWords}>no</Typography>}
                         />
-                    </FormGroup>
-                    <FormHelperText className={warningWords} onClick={openModal}>Choose all that apply</FormHelperText>
+                    </RadioGroup>
                 </FormControl>
             </div>
             {/* How feasible is it for participants to travel?  */}
@@ -360,25 +344,24 @@ function UsabilityQuestions() {
                 <FormControl component="fieldset" className={classes.formControl}>
                     <FormLabel className={questionWords} component="legend">How feasible is it for participants to travel? </FormLabel>
                     <br></br>
-                    <FormGroup>
+                    <RadioGroup aria-labelledby="demo-radio-buttons-group-label" name="radio-buttons-group">
                         <FormControlLabel
-                            control={<Checkbox checked={q10a1} onChange={handleChange} name="q10a1" style={{ color: "white" }} />}
+                            value="q10a1" control={<Radio />}
                             label={<Typography className={answerWords}>not possible</Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q10a2} onChange={handleChange} name="q10a2" style={{ color: "white" }} />}
+                            value="q10a2" control={<Radio />}
                             label={<Typography className={answerWords}>low feasibility </Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q10a3} onChange={handleChange} name="q10a3" style={{ color: "white" }} />}
+                            value="q10a3" control={<Radio />}
                             label={<Typography className={answerWords}>medium feasibility </Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q10a4} onChange={handleChange} name="q10a4" style={{ color: "white" }} />}
+                            value="q10a4" control={<Radio />}
                             label={<Typography className={answerWords}>high feasibility</Typography>}
                         />
-                    </FormGroup>
-                    <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
+                    </RadioGroup>
                 </FormControl>
             </div>
             {/* Can all participants travel?  */}
@@ -386,25 +369,24 @@ function UsabilityQuestions() {
                 <FormControl component="fieldset" className={classes.formControl}>
                     <FormLabel className={questionWords} component="legend">Can all participants travel? </FormLabel>
                     <br></br>
-                    <FormGroup>
+                    <RadioGroup aria-labelledby="demo-radio-buttons-group-label" name="radio-buttons-group">
                         <FormControlLabel
-                            control={<Checkbox checked={q11a1} onChange={handleChange} name="q11a1" style={{ color: "white" }} />}
+                            value="q11a1" control={<Radio />}
                             label={<Typography className={answerWords}>none</Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q11a2} onChange={handleChange} name="q11a2" style={{ color: "white" }} />}
+                            value="q11a2" control={<Radio />}
                             label={<Typography className={answerWords}>less than half</Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q11a3} onChange={handleChange} name="q11a3" style={{ color: "white" }} />}
+                            value="q11a3" control={<Radio />}
                             label={<Typography className={answerWords}>at least half</Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q11a4} onChange={handleChange} name="q11a4" style={{ color: "white" }} />}
+                            value="q11a4" control={<Radio />}
                             label={<Typography className={answerWords}>all</Typography>}
                         />
-                    </FormGroup>
-                    <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
+                    </RadioGroup>
                 </FormControl>
             </div>
         </div>
