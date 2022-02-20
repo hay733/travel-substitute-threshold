@@ -104,7 +104,7 @@ class QuestionsEngagementCopresenceSSA extends React.Component {
                         Back
                     </Button>
                     <Button className={classes.submitButton} style={{float: 'right'}} href="/results">
-                        Next
+                        Submit
                     </Button>
                     <br></br><br></br><br></br>
                 </body>

@@ -13,6 +13,8 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
 
 /**
  * constant that sets the styling for different types of text
@@ -21,7 +23,7 @@ const useStyles = makeStyles(() => ({
     questionWords: {
         fontFamily: "Open Sans, sans-serif",
         fontWeight: 700,
-        fontSize: "30px",
+        fontSize: "27px",
         // textTransform: "lowercase",
         // margin: "25px",
         // textAlign: "center",
@@ -147,7 +149,7 @@ function KnowledgeMentalWorkloadQuestions() {
         <Root>
         <div>
 
-            <Divider textAlign="right" className={divWords}>Knowledge</Divider>
+            <Divider textAlign="right" className={divWords}>knowledge</Divider>
             {/* What is the goal/focus of this meeting?   */}
             <div className={classes.root}>
                 <FormControl component="fieldset" className={classes.formControl}>
@@ -183,45 +185,43 @@ function KnowledgeMentalWorkloadQuestions() {
                 <FormControl component="fieldset" className={classes.formControl}>
                     <FormLabel className={questionWords} component="legend">How difficult will meeting tasks be? </FormLabel>
                     <br></br>
-                    <FormGroup>
+                    <RadioGroup aria-labelledby="demo-radio-buttons-group-label" name="radio-buttons-group">
                         <FormControlLabel
-                            control={<Checkbox checked={q2a1} onChange={handleChange} name="q2a1" style={{ color: "white" }} />}
+                            value="q2a1" control={<Radio />}
                             label={<Typography className={answerWords}>low</Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q2a2} onChange={handleChange} name="q2a2" style={{ color: "white" }} />}
+                            value="q2a2" control={<Radio />}
                             label={<Typography className={answerWords}>medium</Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q2a3} onChange={handleChange} name="q2a3" style={{ color: "white" }} />}
+                            value="q2a3" control={<Radio />}
                             label={<Typography className={answerWords}>high</Typography>}
                         />
-                    </FormGroup>
-                    <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
+                    </RadioGroup>
                 </FormControl>
             </div>
 
-            <Divider textAlign="right" className={divWords}>Mental Workload</Divider>
+            <Divider textAlign="right" className={divWords}>mental workload</Divider>
             {/* How easy will it be for the participant to remember the content of the meeting? */}
             <div className={classes.root}>
                 <FormControl component="fieldset" className={classes.formControl}>
                     <FormLabel className={questionWords} component="legend">How easy will it be for the participant to remember the content of the meeting?</FormLabel>
                     <br></br>
-                    <FormGroup>
+                    <RadioGroup aria-labelledby="demo-radio-buttons-group-label" name="radio-buttons-group">
                         <FormControlLabel
-                            control={<Checkbox checked={q3a1} onChange={handleChange} name="q3a1" style={{ color: "white" }} />}
+                            value="q3a1" control={<Radio />}
                             label={<Typography className={answerWords}>the information is easy to remember</Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q3a2} onChange={handleChange} name="q3a2" style={{ color: "white" }} />}
+                            value="q3a2" control={<Radio />}
                             label={<Typography className={answerWords}>they will remember most information without review</Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q3a3} onChange={handleChange} name="q3a3" style={{ color: "white" }} />}
+                            value="q3a3" control={<Radio />}
                             label={<Typography className={answerWords}>they may need to review most of the information later</Typography>}
                         />
-                    </FormGroup>
-                    <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
+                    </RadioGroup>
                 </FormControl>
             </div>
             {/* How long will it take most participants to accomplish the goals of the meeting? */}
@@ -229,44 +229,42 @@ function KnowledgeMentalWorkloadQuestions() {
                 <FormControl component="fieldset" className={classes.formControl}>
                     <FormLabel className={questionWords} component="legend">How long will it take most participants to accomplish the goals of the meeting?</FormLabel>
                     <br></br>
-                    <FormGroup>
+                    <RadioGroup aria-labelledby="demo-radio-buttons-group-label" name="radio-buttons-group">
                         <FormControlLabel
-                            control={<Checkbox checked={q4a1} onChange={handleChange} name="q4a1" style={{ color: "white" }} />}
+                            value="q4a1" control={<Radio />}
                             label={<Typography className={answerWords}>1-2 hours</Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q4a2} onChange={handleChange} name="q4a2" style={{ color: "white" }} />}
+                            value="q4a2" control={<Radio />}
                             label={<Typography className={answerWords}>half day (~4 hours)</Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q4a3} onChange={handleChange} name="q4a3" style={{ color: "white" }} />}
+                            value="q4a3" control={<Radio />}
                             label={<Typography className={answerWords}>1+ days</Typography>}
                         />
-                    </FormGroup>
-                    <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
+                    </RadioGroup>
                 </FormControl>
             </div>
             {/* //  How knowledgeable are most participants about the meeting topic?   */}
             <div className={classes.root}>
                 <br></br><br></br><br></br><br></br><br></br>
                 <FormControl component="fieldset" className={classes.formControl}>
-                    <FormLabel className={questionWords} component="legend">What is the goal/focus of this meeting?</FormLabel>
+                    <FormLabel className={questionWords} component="legend">How knowledgeable are most participants about the meeting topic?</FormLabel>
                     <br></br>
-                    <FormGroup>
+                    <RadioGroup aria-labelledby="demo-radio-buttons-group-label" name="radio-buttons-group">
                         <FormControlLabel
-                            control={<Checkbox checked={q5a1} onChange={handleChange} name="q5a1" style={{ color: "white" }} />}
+                            value="q5a1" control={<Radio />}
                             label={<Typography className={answerWords}>they are new to the topic</Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q5a2} onChange={handleChange} name="q5a2" style={{ color: "white" }} />}
+                            value="q5a2" control={<Radio />}
                             label={<Typography className={answerWords}>this is a review</Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q5a3} onChange={handleChange} name="q5a3" style={{ color: "white" }} />}
+                            value="q5a3" control={<Radio />}
                             label={<Typography className={answerWords}>they are experts</Typography>}
                         />
-                    </FormGroup>
-                    <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
+                    </RadioGroup>
                 </FormControl>
             </div>
         </div>

@@ -13,6 +13,8 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
 
 /**
  * constant that sets the styling for different types of text
@@ -21,7 +23,7 @@ const useStyles = makeStyles(() => ({
     questionWords: {
         fontFamily: "Open Sans, sans-serif",
         fontWeight: 700,
-        fontSize: "30px",
+        fontSize: "27px",
         // textTransform: "lowercase",
         // margin: "25px",
         // textAlign: "center",
@@ -31,7 +33,7 @@ const useStyles = makeStyles(() => ({
         fontFamily: "Open Sans, sans-serif",
         fontWeight: 700,
         fontSize: "25px",
-        // textTransform: "lowercase",
+        textTransform: "lowercase",
         // margin: "25px",
         // textAlign: "center",
         color: "#1E2124",
@@ -127,20 +129,9 @@ function EngagementCopresenceSSAQuestions() {
         setState({ ...state, [event.target.name]: event.target.checked });
     };
 
-    //sets the questions
+    //sets the 'check all that apply' questions
     const { 
         q1a1, q1a2, q1a3, q1a4, q1a5, q1a6, //Select all types of interactions needed 
-        q2a1, q2a2, q2a3, //How frequently will the participants be expected to respond to the host of the meeting? 
-        q3a1, q3a2, q3a3, q3a4, //How much cooperation between participants is required for this meeting? 
-        
-        q4a1, q4a2, q4a3, //How important is realistic facial representation? 
-        q5a1, q5a2, q5a3, //How important is seeing body language? 
-        q6a1, q6a2, q6a3, //How focused/attentive are the other participant(s) when you speak? 
-        q7a1, q7a2, q7a3, //How focused/attentive are you when the other participant(s) speak? 
-        
-        q8a1, q8a2, q8a3, //How important is it that you are looking at the same thing at the same time? 
-        q9a1, q9a2, q9a3, //How important is it for all participants to comprehend the same concepts at the same time?  
-        q10a1, q10a2, q10a3, //How important is it for all participants to be able to predict/make the same projections at the same time? 
     } = state;
     /**
      * Opens the popup of the corresponding table cell
@@ -201,21 +192,20 @@ function EngagementCopresenceSSAQuestions() {
                 <FormControl component="fieldset" className={classes.formControl}>
                     <FormLabel className={questionWords} component="legend">How frequently will the participants be expected to respond to the host of the meeting? </FormLabel>
                     <br></br>
-                    <FormGroup>
-                        <FormControlLabel
-                            control={<Checkbox checked={q2a1} onChange={handleChange} name="q2a1" style={{ color: "white" }} />}
-                            label={<Typography className={answerWords}>Low frequency </Typography>}
+                    <RadioGroup aria-labelledby="demo-radio-buttons-group-label" name="radio-buttons-group">
+                        <FormControlLabel 
+                            value="q2a1" control={<Radio />}
+                            label={<Typography className={answerWords}>Low frequency </Typography>} 
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q2a2} onChange={handleChange} name="q2a2" style={{ color: "white" }} />}
+                            value="q2a2" control={<Radio />}
                             label={<Typography className={answerWords}>Moderate frequency</Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q2a3} onChange={handleChange} name="q2a3" style={{ color: "white" }} />}
+                            value="q2a3" control={<Radio />}
                             label={<Typography className={answerWords}>High frequency</Typography>}
                         />
-                    </FormGroup>
-                    <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
+                    </RadioGroup>
                 </FormControl>
             </div>
             {/* How much cooperation between participants is required for this meeting?  */}
@@ -223,25 +213,24 @@ function EngagementCopresenceSSAQuestions() {
                 <FormControl component="fieldset" className={classes.formControl}>
                     <FormLabel className={questionWords} component="legend">How much cooperation between participants is required for this meeting? </FormLabel>
                     <br></br>
-                    <FormGroup>
+                    <RadioGroup aria-labelledby="demo-radio-buttons-group-label" name="radio-buttons-group">
                         <FormControlLabel
-                            control={<Checkbox checked={q3a1} onChange={handleChange} name="q3a1" style={{ color: "white" }} />}
+                            value="q3a1" control={<Radio />}
                             label={<Typography className={answerWords}>No cooperation needed </Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q3a2} onChange={handleChange} name="q3a2" style={{ color: "white" }} />}
+                            value="q3a2" control={<Radio />}
                             label={<Typography className={answerWords}>Low cooperation </Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q3a3} onChange={handleChange} name="q3a3" style={{ color: "white" }} />}
+                            value="q3a3" control={<Radio />}
                             label={<Typography className={answerWords}>Medium cooperation </Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q3a4} onChange={handleChange} name="q3a4" style={{ color: "white" }} />}
+                            value="q3a4" control={<Radio />}
                             label={<Typography className={answerWords}>High cooperation  </Typography>}
                         />
-                    </FormGroup>
-                    <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
+                    </RadioGroup>
                 </FormControl>
             </div>
 
@@ -251,21 +240,20 @@ function EngagementCopresenceSSAQuestions() {
                 <FormControl component="fieldset" className={classes.formControl}>
                     <FormLabel className={questionWords} component="legend">How important is realistic facial representation? </FormLabel>
                     <br></br>
-                    <FormGroup>
+                    <RadioGroup aria-labelledby="demo-radio-buttons-group-label" name="radio-buttons-group">
                         <FormControlLabel
-                            control={<Checkbox checked={q4a1} onChange={handleChange} name="q4a1" style={{ color: "white" }} />}
+                            value="q4a1" control={<Radio />}
                             label={<Typography className={answerWords}>Low importance </Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q4a2} onChange={handleChange} name="q4a2" style={{ color: "white" }} />}
+                            value="q4a2" control={<Radio />}
                             label={<Typography className={answerWords}>Medium importance </Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q4a3} onChange={handleChange} name="q4a3" style={{ color: "white" }} />}
+                            value="q4a3" control={<Radio />}
                             label={<Typography className={answerWords}>High importance </Typography>}
                         />
-                    </FormGroup>
-                    <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
+                    </RadioGroup>
                 </FormControl>
             </div>
             {/* How important is seeing body language?   */}
@@ -274,21 +262,20 @@ function EngagementCopresenceSSAQuestions() {
                 <FormControl component="fieldset" className={classes.formControl}>
                     <FormLabel className={questionWords} component="legend">How important is seeing body language? </FormLabel>
                     <br></br>
-                    <FormGroup>
+                    <RadioGroup aria-labelledby="demo-radio-buttons-group-label" name="radio-buttons-group">
                         <FormControlLabel
-                            control={<Checkbox checked={q5a1} onChange={handleChange} name="q5a1" style={{ color: "white" }} />}
+                            value="q5a1" control={<Radio />}
                             label={<Typography className={answerWords}>Low importance </Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q5a2} onChange={handleChange} name="q5a2" style={{ color: "white" }} />}
+                            value="q5a2" control={<Radio />}
                             label={<Typography className={answerWords}>Medium importance </Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q5a3} onChange={handleChange} name="q5a3" style={{ color: "white" }} />}
+                            value="q5a3" control={<Radio />}
                             label={<Typography className={answerWords}>High importance </Typography>}
                         />
-                    </FormGroup>
-                    <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
+                    </RadioGroup>
                 </FormControl>
             </div>
             {/* How focused/attentive are the other participant(s) when you speak?  */}
@@ -296,21 +283,20 @@ function EngagementCopresenceSSAQuestions() {
                 <FormControl component="fieldset" className={classes.formControl}>
                     <FormLabel className={questionWords} component="legend">How focused/attentive are the other participant(s) when you speak? </FormLabel>
                     <br></br>
-                    <FormGroup>
+                    <RadioGroup aria-labelledby="demo-radio-buttons-group-label" name="radio-buttons-group">
                         <FormControlLabel
-                            control={<Checkbox checked={q6a1} onChange={handleChange} name="q6a1" style={{ color: "white" }} />}
+                            value="q6a1" control={<Radio />}
                             label={<Typography className={answerWords}>Low focus </Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q6a2} onChange={handleChange} name="q6a2" style={{ color: "white" }} />}
+                            value="q6a2" control={<Radio />}
                             label={<Typography className={answerWords}>Medium focus </Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q6a3} onChange={handleChange} name="q6a3" style={{ color: "white" }} />}
+                            value="q6a3" control={<Radio />}
                             label={<Typography className={answerWords}>High focus </Typography>}
                         />
-                    </FormGroup>
-                    <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
+                    </RadioGroup>
                 </FormControl>
             </div>
             {/* How focused/attentive are you when the other participant(s) speak?  */}
@@ -318,21 +304,20 @@ function EngagementCopresenceSSAQuestions() {
                 <FormControl component="fieldset" className={classes.formControl}>
                     <FormLabel className={questionWords} component="legend">How difficult will it be to remember the content of the meeting?</FormLabel>
                     <br></br>
-                    <FormGroup>
+                    <RadioGroup aria-labelledby="demo-radio-buttons-group-label" name="radio-buttons-group">
                         <FormControlLabel
-                            control={<Checkbox checked={q7a1} onChange={handleChange} name="q7a1" style={{ color: "white" }} />}
+                            value="q7a1" control={<Radio />}
                             label={<Typography className={answerWords}>Low focus </Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q7a2} onChange={handleChange} name="q7a2" style={{ color: "white" }} />}
+                            value="q7a3" control={<Radio />}
                             label={<Typography className={answerWords}>Medium focus </Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q7a3} onChange={handleChange} name="q7a3" style={{ color: "white" }} />}
+                            value="q7a3" control={<Radio />}
                             label={<Typography className={answerWords}>High focus </Typography>}
                         />
-                    </FormGroup>
-                    <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
+                    </RadioGroup>
                 </FormControl>
             </div>
 
@@ -342,21 +327,20 @@ function EngagementCopresenceSSAQuestions() {
                 <FormControl component="fieldset" className={classes.formControl}>
                     <FormLabel className={questionWords} component="legend">How important is it that you are looking at the same thing at the same time? </FormLabel>
                     <br></br>
-                    <FormGroup>
+                    <RadioGroup aria-labelledby="demo-radio-buttons-group-label" name="radio-buttons-group">
                         <FormControlLabel
-                            control={<Checkbox checked={q8a1} onChange={handleChange} name="q8a1" style={{ color: "white" }} />}
+                            value="q8a1" control={<Radio />}
                             label={<Typography className={answerWords}>Low importance </Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q8a2} onChange={handleChange} name="q8a2" style={{ color: "white" }} />}
+                            value="q8a2" control={<Radio />}
                             label={<Typography className={answerWords}>Medium importance </Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q8a3} onChange={handleChange} name="q8a3" style={{ color: "white" }} />}
+                            value="q8a3" control={<Radio />}
                             label={<Typography className={answerWords}>High importance </Typography>}
                         />
-                    </FormGroup>
-                    <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
+                    </RadioGroup>
                 </FormControl>
             </div>
             {/* How important is it for all participants to comprehend the same concepts at the same time?   */}
@@ -364,21 +348,20 @@ function EngagementCopresenceSSAQuestions() {
                 <FormControl component="fieldset" className={classes.formControl}>
                     <FormLabel className={questionWords} component="legend">How important is it for all participants to comprehend the same concepts at the same time? </FormLabel>
                     <br></br>
-                    <FormGroup>
+                    <RadioGroup aria-labelledby="demo-radio-buttons-group-label" name="radio-buttons-group">
                         <FormControlLabel
-                            control={<Checkbox checked={q9a1} onChange={handleChange} name="q9a1" style={{ color: "white" }} />}
+                            value="q9a1" control={<Radio />}
                             label={<Typography className={answerWords}>Low importance </Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q9a2} onChange={handleChange} name="q9a2" style={{ color: "white" }} />}
+                            value="q9a2" control={<Radio />}
                             label={<Typography className={answerWords}>Medium importance </Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q9a3} onChange={handleChange} name="q9a3" style={{ color: "white" }} />}
+                            value="q9a3" control={<Radio />}
                             label={<Typography className={answerWords}>High importance </Typography>}
                         />
-                    </FormGroup>
-                    <FormHelperText className={warningWords} onClick={openModal}>Choose all that apply</FormHelperText>
+                    </RadioGroup>
                 </FormControl>
             </div>
             {/* How important is it for all participants to be able to predict/make the same projections at the same time? */}
@@ -386,23 +369,20 @@ function EngagementCopresenceSSAQuestions() {
                 <FormControl component="fieldset" className={classes.formControl}>
                     <FormLabel className={questionWords} component="legend">How important is it for all participants to be able to predict/make the same projections at the same time? </FormLabel>
                     <br></br>
-                    <FormGroup>
-                    <FormGroup>
+                    <RadioGroup aria-labelledby="demo-radio-buttons-group-label" name="radio-buttons-group">
                         <FormControlLabel
-                            control={<Checkbox checked={q10a1} onChange={handleChange} name="q10a1" style={{ color: "white" }} />}
+                            value="q10a1" control={<Radio />}
                             label={<Typography className={answerWords}>Low importance </Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q10a2} onChange={handleChange} name="q10a2" style={{ color: "white" }} />}
+                            value="q10a2" control={<Radio />}
                             label={<Typography className={answerWords}>Medium importance </Typography>}
                         />
                         <FormControlLabel
-                            control={<Checkbox checked={q10a3} onChange={handleChange} name="q10a3" style={{ color: "white" }} />}
+                            value="q10a3" control={<Radio />}
                             label={<Typography className={answerWords}>High importance </Typography>}
                         />
-                    </FormGroup>
-                    </FormGroup>
-                    <FormHelperText className={warningWords}>Choose all that apply</FormHelperText>
+                    </RadioGroup>
                 </FormControl>
             </div>
         </div>
