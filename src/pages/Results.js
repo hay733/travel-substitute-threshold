@@ -41,23 +41,22 @@ const useStyles = makeStyles(() => ({
  * sets the css styles for the different components
  */
 const styles = theme => ({
-    whyButton: {
+    mainWords: {
         fontFamily: "Open Sans, sans-serif",
         fontWeight: 700,
-        fontSize: "20px",
+        fontSize: "40px",
+        margin: "25px",
+        textAlign: "center",
+        color: "#1E2124",
+    },
+    buttonStyles: {
+        fontFamily: "Open Sans, sans-serif", 
+        color: "#1E2124",
+        fontWeight: 700,
+        fontSize: 17,
+        borderColor: "#25292D",
+        borderBottomWidth: "1px",
         textTransform: "lowercase",
-      //   marginLeft: "45%",
-        color: "#FFFFEE",
-        backgroundColor: "#1E2124",
-        margin: "auto",
-      },
-      mainWords: {
-          fontFamily: "Open Sans, sans-serif",
-          fontWeight: 700,
-          fontSize: "40px",
-          margin: "25px",
-          textAlign: "center",
-          color: "#1E2124",
       },
 });
 
@@ -156,20 +155,11 @@ class Results extends React.Component {
                 </div>
 
                 {/* render the "next steps" buttongroup */}
-                <div style={{textAlign: "center"}}>
-                    <ButtonGroup variant="outlined" aria-label="text button group">
-                        <Button href="/about">more info</Button>
-                        <Button onClick={this.contributeData}>anonymously contribute my data</Button>
-                        {/* open popup when data is successfully contributed */}
-                        <Dialog open={this.state.dataContributedPopup} onClose={this.closeContributeData}>
-                            <DialogTitle>Success</DialogTitle>
-                            <DialogContent>
-                                <DialogContentText>
-                                    Your data has been successfully contributed. Thank you.
-                                </DialogContentText>
-                            </DialogContent>
-                            <Button onClick={this.closeContributeData}>Close</Button>
-                        </Dialog>
+
+                <div style={{textAlign: "center"}} >
+                    <ButtonGroup variant="outlined" aria-label="text button group" className={classes.buttonStyles}>
+                        <Button className={classes.buttonStyles} href="/about">more info</Button>
+                        <Button className={classes.buttonStyles} >anonymously contribute my data</Button>
                     </ButtonGroup>
                 </div>
           </>
