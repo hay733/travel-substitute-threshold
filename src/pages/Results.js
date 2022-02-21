@@ -136,6 +136,7 @@ class Results extends React.Component {
                     {/* Render header and best option */}
                     <Header />
                     <h1 className={classes.mainWords} style = {{marginTop: "15%"}}>A teleconferencing software is your best option</h1>
+                    {/* <br></br><br></br><br></br><br></br><br></br><br></br><br></br> */}
 
                     {/* Render the datatable, and have onClick to open popups */}
                     <div className={classes.content_container}  onClick={this.openModal}>
