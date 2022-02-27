@@ -71,8 +71,7 @@ class Results extends React.Component {
         isOpen: false,
         dataContributedPopup: false,
         title: null, 
-        definition: null,
-        description: null
+        definition: null
     };
 
     //shows the table
@@ -91,23 +90,23 @@ class Results extends React.Component {
      * @param {*} e 
      */
     openModal = (e) => {
-        //console.log(e.target.innerHTML);
-        //this.title = e.target.innerText;
         this.definition = e.target;
-        // If the user clicks a button, do NOT open the modal
-        if (e.target.innerText == 'LOW' || e.target.innerText == 'MEDIUM' || e.target.innerText == 'HIGH') {
+        // If the user clicks a button, ah column heading, or a results cell, do NOT open the modal
+        if (e.target.innerText == 'LOW' || e.target.innerText == 'MEDIUM' || e.target.innerText == 'HIGH' | e.target.innerText.includes('Virtual Reality (XR)') || e.target.innerText.includes('Teleconference') || e.target.innerHTML.includes('Face-to-Face') || e.target.innerHTML=='Constructs' || e.target.innerHTML=='Degree Required' || e.target.innerHTML=='Recommendation') {
             this.setState({isOpen: false});
         }
+        // Otherwise, open modal and display title/definition
         else {
             this.setState({isOpen: true});
             var titleString = e.target.innerHTML;
             this.title = titleString.substring(0, titleString.indexOf('<'));
-            var descriptionStr = e.target.innerHTML;
-            //descriptionStr = descriptionStr.substring(0, descriptionStr.indexOf('<p>' + 1));
-            descriptionStr = descriptionStr.replace('<br>', '');
-            descriptionStr = descriptionStr.replace('<br>', '');
-            descriptionStr = descriptionStr.replace(this.title, '');
-            this.description = descriptionStr.substring(descriptionStr.indexOf('>') + 1, descriptionStr.lastIndexOf('<'));
+            var definitionStr = e.target.innerHTML;
+            // //descriptionStr = descriptionStr.substring(0, descriptionStr.indexOf('<p>' + 1));
+            definitionStr = definitionStr.replace('<br>', '');
+            definitionStr = definitionStr.replace('<br>', '');
+            definitionStr = definitionStr.replace(this.title, '');
+            this.definition = definitionStr.substring(definitionStr.indexOf('>') + 1, definitionStr.lastIndexOf('<'));
+            console.log(this.definition);
         }
         // var str = e.target.innerHTML;
         // str.replace("=", '');
@@ -148,7 +147,7 @@ class Results extends React.Component {
                         <DialogTitle margin='10%' align='center'>{this.title}</DialogTitle>
                         <DialogContent>
                             <DialogContentText margin='10%' align='center'>
-                                {this.description}
+                                {this.definition}
                             </DialogContentText>
                         </DialogContent>
                         <Button onClick={this.closeModal}>Close</Button>
@@ -156,6 +155,7 @@ class Results extends React.Component {
                 </div>
 
                 {/* render the "next steps" buttongroup */}
+<<<<<<< Updated upstream
                 <div style={{textAlign: "center"}}>
                     <ButtonGroup variant="outlined" aria-label="text button group">
                         <Button href="/about">more info</Button>
@@ -163,6 +163,16 @@ class Results extends React.Component {
                         {/* open popup when data is successfully contributed */}
                         <Dialog open={this.state.dataContributedPopup} onClose={this.closeContributeData}>
                             <DialogTitle>Success</DialogTitle>
+=======
+
+                <div style={{textAlign: "center"}} >
+                    <ButtonGroup variant="outlined" aria-label="text button group" className={classes.buttonStyles}>
+                        <Button className={classes.buttonStyles} href="/about">more info</Button>
+                        <Button className={classes.buttonStyles} onClick={this.contributeData}>anonymously contribute my data</Button>
+                        {/* open popup when data is successfully contributed */}
+                        <Dialog open={this.state.dataContributedPopup} onClose={this.closeContributeData}>
+                            <DialogTitle align='center'>Success</DialogTitle>
+>>>>>>> Stashed changes
                             <DialogContent>
                                 <DialogContentText>
                                     Your data has been successfully contributed. Thank you.

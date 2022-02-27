@@ -34,22 +34,22 @@ const useStyles = makeStyles({
  * @param {*} recommendation the type of meeting recommended based off of the degree and construct
  * @returns the data row generated from the categories
  */
-function createData(constructs, degree, recommendation, definition, description) {
-  return { constructs, degree, recommendation, definition, description };
+function createData(constructs, degree, recommendation, definition) {
+  return { constructs, degree, recommendation, definition };
 }
 
 /**
  * creates the table data as constant values
  */
 const rows = [
-  createData('Engagement', <ToggleButtons />, 'Virtual Reality (XR)', 'The degree of interaction needed for a task to be successful', 'Engagement Description'),
-  createData('Knowledge', <ToggleButtons />, 'Teleconference', 'What participants know about the meeting topic', 'Knowledge Description'),
-  createData('Mental Workload', <ToggleButtons />, 'Face-to-Face or Teleconference', 'The effort or cost incurred by the human operator to perform the task using the provided tools', 'Mental Workload Description'),
-  createData('Performance', <ToggleButtons />, 'Virtual Reality (XR) or Face-to-Face', 'The ability for a person to successfully perform a task', 'Performance Description'),
-  createData('Rapport', <ToggleButtons />, 'Virtual Reality (XR)', 'A relationship defined by a deep sense of empathy and community', 'Rapport Description'),
-  createData('Shared Situational Awareness', <ToggleButtons />, 'Virtual Reality (XR)', 'Multiple people having a common idea about what is happening', 'SSA Description'),
-  createData('Trust', <ToggleButtons />, 'Teleconference', 'The belief that another person is honest and reliable', 'Trust Description'),
-  createData('Usability', <ToggleButtons />, 'Teleconference or Virtual Reality (XR)', 'The ability of a process to be performed simply and effectively', 'Usability Description'),
+  createData('Engagement', <ToggleButtons />, 'Virtual Reality (XR)', 'Directing one’s attention, acknowledging other participants, and demonstrating a readiness to interact with other participants, whether positively or negatively'),
+  createData('Knowledge', <ToggleButtons />, 'Teleconference', 'What participants know about the meeting topic'),
+  createData('Mental Workload', <ToggleButtons />, 'Face-to-Face or Teleconference', 'The ease of mental effort that the participants need to expend to carry out the purpose of the meeting without overloading the participant'),
+  createData('Performance', <ToggleButtons />, 'Virtual Reality (XR) or Face-to-Face', 'How accurately and efficiently a participant completes the required task(s)'),
+  createData('Rapport', <ToggleButtons />, 'Virtual Reality (XR)','A perceived quality of interactions that evokes positive feelings and inspires cooperation and affinity'),
+  createData('Shared Situational Awareness', <ToggleButtons />, 'Virtual Reality (XR)', 'The extent to which participants have a commonly understood mental model of a situation (I.e., what is currently happening and what is going to happen)'),
+  createData('Trust', <ToggleButtons />, 'Teleconference', '    The intent to accept vulnerability based on positive expectations'),
+  createData('Usability', <ToggleButtons />, 'Teleconference or Virtual Reality (XR)', 'The perceived ease of use of the communication tools to the participants'),
 ];
 
 /**
@@ -72,11 +72,8 @@ function DataTable() {
           {rows.map((row) => (
             <TableRow key={row.name}>
               <TableCell component="th" scope="row" className={classes.tableCell} description={row.definition}>
-                {row.constructs}
-                <br></br>
-                <br></br>
-                {row.definition}
-                <p hidden='true' class='description'>{row.description}</p>
+                {row.constructs} &#9432;
+                <p hidden='true' class='description'>{row.definition}</p>
               </TableCell>
               <TableCell align="right" className={classes.tableCell}>{row.degree}</TableCell>
               <TableCell align="right" className={classes.tableCell}>{row.recommendation}</TableCell>
