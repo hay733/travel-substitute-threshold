@@ -1,3 +1,4 @@
+
 import Header from './Header'
 import airscottie from '../airscottie.png'
 
@@ -69,5 +70,4 @@ function Descriptions() {
         </div>
     );
 }
-
 export default Descriptions;

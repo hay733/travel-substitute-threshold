@@ -1,3 +1,4 @@
+
 import Header from './Header'
 import airscottie from '../airscottie.png'
 
@@ -60,5 +61,4 @@ function Citations() {
         </div>
     );
 }
-
 export default Citations;
