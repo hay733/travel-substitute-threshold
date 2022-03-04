@@ -155,16 +155,6 @@ class Results extends React.Component {
                 </div>
 
                 {/* render the "next steps" buttongroup */}
-<<<<<<< Updated upstream
-                <div style={{textAlign: "center"}}>
-                    <ButtonGroup variant="outlined" aria-label="text button group">
-                        <Button href="/about">more info</Button>
-                        <Button onClick={this.contributeData}>anonymously contribute my data</Button>
-                        {/* open popup when data is successfully contributed */}
-                        <Dialog open={this.state.dataContributedPopup} onClose={this.closeContributeData}>
-                            <DialogTitle>Success</DialogTitle>
-=======
-
                 <div style={{textAlign: "center"}} >
                     <ButtonGroup variant="outlined" aria-label="text button group" className={classes.buttonStyles}>
                         <Button className={classes.buttonStyles} href="/about">more info</Button>
@@ -172,7 +162,6 @@ class Results extends React.Component {
                         {/* open popup when data is successfully contributed */}
                         <Dialog open={this.state.dataContributedPopup} onClose={this.closeContributeData}>
                             <DialogTitle align='center'>Success</DialogTitle>
->>>>>>> Stashed changes
                             <DialogContent>
                                 <DialogContentText>
                                     Your data has been successfully contributed. Thank you.
