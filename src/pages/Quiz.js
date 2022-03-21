@@ -50,7 +50,7 @@ function Quiz() {
                     Find your travel substitution threshold
                 </h2>
                 <br></br>
-                <Button variant="contained" /*color="primary"*/ className={quizButton} href="/questions">
+                <Button variant="contained" /*color="primary"*/ className={quizButton} href="/questions-knowledge_mentalWorkload">
                     Start Quiz
                 </Button>
             </body>

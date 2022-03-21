@@ -3,7 +3,7 @@ import DataTable from './Table'
 
 import { makeStyles, withStyles, Button } from "@material-ui/core"
 import React, { useEffect, useState } from 'react';
-import QuestionBoxes from './QuestionBoxes';
+import QuestionBoxes from './constructQuestions/Usability';
 import Box from "@material-ui/core/Box";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContentText from "@material-ui/core/DialogContentText";
@@ -41,23 +41,22 @@ const useStyles = makeStyles(() => ({
  * sets the css styles for the different components
  */
 const styles = theme => ({
-    whyButton: {
+    mainWords: {
         fontFamily: "Open Sans, sans-serif",
         fontWeight: 700,
-        fontSize: "20px",
+        fontSize: "40px",
+        margin: "25px",
+        textAlign: "center",
+        color: "#1E2124",
+    },
+    buttonStyles: {
+        fontFamily: "Open Sans, sans-serif", 
+        color: "#1E2124",
+        fontWeight: 700,
+        fontSize: 17,
+        borderColor: "#25292D",
+        borderBottomWidth: "1px",
         textTransform: "lowercase",
-      //   marginLeft: "45%",
-        color: "#FFFFEE",
-        backgroundColor: "#1E2124",
-        margin: "auto",
-      },
-      mainWords: {
-          fontFamily: "Open Sans, sans-serif",
-          fontWeight: 700,
-          fontSize: "40px",
-          margin: "25px",
-          textAlign: "center",
-          color: "#1E2124",
       },
 });
 
@@ -136,6 +135,7 @@ class Results extends React.Component {
                     {/* Render header and best option */}
                     <Header />
                     <h1 className={classes.mainWords} style = {{marginTop: "15%"}}>A teleconferencing software is your best option</h1>
+                    {/* <br></br><br></br><br></br><br></br><br></br><br></br><br></br> */}
 
                     {/* Render the datatable, and have onClick to open popups */}
                     <div className={classes.content_container}  onClick={this.openModal}>
