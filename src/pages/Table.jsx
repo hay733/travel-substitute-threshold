@@ -9,6 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';      
 
 import ToggleButtons from './ToggleButtons'  
+import Results from './Results';
 
 /**
  * sets the css styles for the different components
@@ -50,6 +51,16 @@ function createData(constructs, degree, recommendation, definition, description)
 }
 
 /**
+ * 
+ * @param {*} items 
+ * @returns 
+ */
+function averageResults(items) {
+  
+  return result;
+}
+
+/**
  * creates the table data as constant values
  */
 const rows = [
@@ -62,6 +73,9 @@ const rows = [
   createData('Trust', <ToggleButtons />, 'Teleconference', 'The belief that another person is honest and reliable', 'Trust Description'),
   createData('Usability', <ToggleButtons />, 'Teleconference or Virtual Reality (XR)', 'The ability of a process to be performed simply and effectively', 'Usability Description'),
 ];
+
+//determine the most often used answer
+const avResult = averageResults(rows);
 
 /**
  * @returns remders the rows and columns for all the data
@@ -93,6 +107,12 @@ function DataTable() {
               <TableCell align="right" className={classes.tableCell}>{row.recommendation}</TableCell>
             </TableRow>
           ))}
+
+          <TableRow>
+            <TableCell rowSpan={8} className={classes.tableCell}/>
+            <TableCell colSpan={1} className={classes.tableCell}>Recommendation</TableCell>
+            <TableCell align="right">{avResult}</TableCell>
+          </TableRow>
         </TableBody>
       </Table>
     </TableContainer>
