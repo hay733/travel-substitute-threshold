@@ -50,6 +50,10 @@ const headersData = [
     label: "about",
     href: "/about",
   },
+  {
+    label: "descriptions",
+    href: "/descriptions",
+  },
 ];
 
 /**
