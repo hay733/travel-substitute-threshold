@@ -56,7 +56,10 @@ function createData(constructs, degree, recommendation, definition, description)
  * @returns 
  */
 function averageResults(items) {
-  
+  var result = "";
+  this.state.degree 
+
+
   return result;
 }
 
