@@ -7,8 +7,9 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';      
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
-import ToggleButtons from './ToggleButtons'  
 import Results from './Results';
 
 /**
@@ -79,6 +80,30 @@ const rows = [
 
 //determine the most often used answer
 const avResult = averageResults(rows);
+
+/**
+ * @returns sets the toggle ability for the buttons
+ */
+function ToggleButtons() {
+  const [alignment, setAlignment] = React.useState('high');
+
+  const handleAlignment = (event, newAlignment) => {
+    setAlignment(newAlignment);
+  };
+ 
+  return (
+    <ToggleButtonGroup
+      value={alignment}
+      exclusive
+      onChange={handleAlignment}
+      aria-label="text alignment"
+    >
+      <ToggleButton value="low" aria-label="low">Low</ToggleButton>
+      <ToggleButton value="med" aria-label="med">Medium</ToggleButton>
+      <ToggleButton value="high" aria-label="high">High</ToggleButton>
+    </ToggleButtonGroup>
+  );
+}
 
 /**
  * @returns remders the rows and columns for all the data
