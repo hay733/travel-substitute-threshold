@@ -1,6 +1,5 @@
 import React from 'react';
-
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -9,16 +8,18 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';      
 import { Button, ButtonGroup } from '@material-ui/core';
-import ToggleButton from '@mui/material/ToggleButton';
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-import { CallReceivedSharp } from '@material-ui/icons';
-import { mobileStepperClasses } from '@mui/material';
 
+/**
+ * Class for rendering the entire table
+ */
 class ResultsTable extends React.Component {
 
     constructor(props) {
         super(props);
 
+        /**
+         * the default values for each of the results table slots
+         */
         this.state = {
             data: [
                 {
@@ -71,7 +72,11 @@ class ResultsTable extends React.Component {
             ]
         };
     }
- 
+    
+    /**
+     * Sets the Recommendation of that row to virtual reality
+     * @param {*} i index of the row
+     */
     updateRecVR(i){
         let prevState = [...this.state.data];
         prevState[i].Recommendation = "Virtual Reality";
@@ -80,6 +85,10 @@ class ResultsTable extends React.Component {
         });
     };
 
+    /**
+     * Sets the Recommendation of that row to f2f
+     * @param {*} i index of the row
+     */
     updateRecF2F(i){
         let prevState = [...this.state.data];
         prevState[i].Recommendation = "Face-to-Face";
@@ -88,6 +97,10 @@ class ResultsTable extends React.Component {
         });
     };
 
+    /**
+     * Sets the Recommendation of that row to teleconference
+     * @param {*} i index of the row
+     */
     updateRecTel(i){
         let prevState = [...this.state.data];
         prevState[i].Recommendation = "Teleconference";
@@ -96,6 +109,10 @@ class ResultsTable extends React.Component {
         });
     };
 
+    /**
+     * 
+     * @returns a string stating the average recommendation value
+     */
     CalcAv() {
         var i, vr, f2f, tel;
         tel = vr = f2f = 0;
@@ -110,22 +127,16 @@ class ResultsTable extends React.Component {
         return "Face-to-Face";
     }
 
+    /**
+     * 
+     * @returns the data rows in the table, including the low/med/high button group
+     */
     tableTable() {
         // const [alignment, setAlignment] = React.useState('high');
 
         // const handleAlignment = (event, newAlignment) => {
         //     setAlignment(newAlignment);
         // };
-        const useStyles = makeStyles({
-            tableCell: {
-                fontFamily: "Open Sans, sans-serif", 
-                color: "#1E2124",
-                fontWeight: 700,
-                fontSize: 19,
-                borderColor: "#1E2124",
-                borderBottomWidth: "1px",
-              },
-        });
         return this.state.data.map((data, index) => {
             const { Construct, Recommendation } = data
             return (
@@ -152,6 +163,10 @@ class ResultsTable extends React.Component {
         }) 
     }
 
+    /**
+     * 
+     * @returns the table header values
+     */
     tableHeader() {
         return (
             <TableHead>
@@ -166,7 +181,11 @@ class ResultsTable extends React.Component {
             </TableHead>
         )
     }
-  
+    
+    /**
+     * 
+     * @returns the whole table - headers, body, spanning cells at the bottom
+     */
     render() {
         return (
             <div >

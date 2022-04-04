@@ -14,6 +14,11 @@ import Results from './Results';
 import { render } from '@testing-library/react';
 
 /**
+ * WAS THE RESULTS TABLE, BUT NO LONGER BEING USED DUE TO LACK OF 
+ * FUNCTIONALITY
+ */
+
+/**
  * sets the css styles for the different components
  */
 const useStyles = makeStyles({

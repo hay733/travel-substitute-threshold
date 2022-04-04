@@ -143,7 +143,6 @@ class Results extends React.Component {
                     {/* <div className={classes.content_container}  onClick={this.openModal}> */}
                     <div className={classes.content_container}>
                         <ResultsTable/>
-                        {/* <DataTable/> */}
                     </div>
                         
                     {/* generates the construct def popup */}
