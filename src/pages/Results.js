@@ -12,6 +12,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import Typography from "@material-ui/core/Typography";
 import { ButtonGroup } from '@mui/material';
+import ResultsTable from './TestTable';
 
 /**
  * sets the css styles for the container sizes
@@ -139,8 +140,10 @@ class Results extends React.Component {
                     {/* <br></br><br></br><br></br><br></br><br></br><br></br><br></br> */}
 
                     {/* Render the datatable, and have onClick to open popups */}
-                    <div className={classes.content_container}  onClick={this.openModal}>
-                        <DataTable/>
+                    {/* <div className={classes.content_container}  onClick={this.openModal}> */}
+                    <div className={classes.content_container}>
+                        <ResultsTable/>
+                        {/* <DataTable/> */}
                     </div>
                         
                     {/* generates the construct def popup */}

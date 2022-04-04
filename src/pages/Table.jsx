@@ -209,7 +209,7 @@ function ToggleButtons() {
       onChange={handleAlignment}
       aria-label="text alignment"
     >
-      <ToggleButton value="low" aria-label="low" onChange={handleRecChange(know_rec, "low")}>Low</ToggleButton>
+      <ToggleButton value="low" aria-label="low" OnClick={handleRecChange(know_rec, "low")}>Low</ToggleButton>
       <ToggleButton value="med" aria-label="med" onClick={handleRecChange(know_rec, "med")}>Medium</ToggleButton>
       <ToggleButton value="high" aria-label="high" onClick={handleRecChange(know_rec, "high")}>High</ToggleButton>
     </ToggleButtonGroup>
