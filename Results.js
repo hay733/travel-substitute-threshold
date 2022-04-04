@@ -2,12 +2,20 @@ import Header from './Header'
 import DataTable from './Table'
 
 import { makeStyles, withStyles, Button } from "@material-ui/core"
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import QuestionBoxes from './QuestionBoxes';
-import { ButtonGroup } from '@mui/material';
+import Box from "@material-ui/core/Box";
 import Dialog from "@material-ui/core/Dialog";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
 import Typography from "@material-ui/core/Typography";
+import { ButtonGroup } from '@mui/material';
 
+/**
+ * sets the css styles for the container sizes
+ */
 const useStyles = makeStyles(() => ({
     container: {
         // backgroundColor: "#545F66", // for testing/sizing
@@ -29,6 +37,9 @@ const useStyles = makeStyles(() => ({
     },
 }));
 
+/**
+ * sets the css styles for the different components
+ */
 const styles = theme => ({
     whyButton: {
         fontFamily: "Open Sans, sans-serif",
@@ -50,108 +61,117 @@ const styles = theme => ({
       },
 });
 
-// function ResultsTable() {
-//     const { container, content_container } = useStyles();
-//     return(
-//         <div className={container}>
-//             {/* <div className={content_container} style={{ float: "left", width: "40%", overflowY: "scroll"}}>
-//                 <QuestionBoxes />
-//             </div> */}
-//             <div className={content_container} /**style={{ float: "right", width: "59.5%" }}**/>
-//                 <DataTable />
-//             </div>
-//         </div>
-//     );
-// }
-
+/**
+ * renders the result + table + next steps buttons
+ */
 class Results extends React.Component {
-    // state, handleshow and handlehide toggle resultstable, but dont need atm
-    // state = {
-    //     isActive: false
-    // };
+    //handles the change in state
     state = {
+        isActive: false,
         isOpen: false,
-        title: null,
+        dataContributedPopup: false,
+        title: null, 
+        definition: null,
         description: null
-    }
-    
-    // handleShow = () => {
-    //     this.setState({isActive: true});
-    //   };
-    
-    // handleHide = () => {
-    //     this.setState({isActive: false});
-    // };
+    };
 
+    //shows the table
+    handleShow = () => {
+        this.setState({isActive: true});
+    };
+    
+    //hides the table
+    handleHide = () => {
+        this.setState({isActive: false});
+    };
+
+    /**
+     * Opens the popup of the corresponding table cell
+     * NOTE: does not open popup when a "degree" button is clicked
+     * @param {*} e 
+     */
     openModal = (e) => {
-        console.log(e);
-        // Do not show a popup when changing degree buttons
-        if (e.target.innerText == 'HIGH' || e.target.innerText == 'MEDIUM' || e.target.innerText == 'LOW') {
+        this.definition = e.target.remove('&#9432;');
+        console.log(e.target.innerText);
+        // If the user clicks in colums 2 or 3, do NOT open the modal
+        if (e.target.innerText=='LOW' || e.target.innerText=='MEDIUM' || e.target.innerText=='HIGH' || e.target.innerText.includes('Virtual Reality (XR)') || e.target.innerText.includes('Teleconference') || e.target.innerText.includes('Face-to-Face') || e.target.innerText=='Constructs' || e.target.innerHTML=='Degree Required' || e.target.innerHTML=='Recommendation') {
             this.setState({isOpen: false});
         }
         else {
-            this.title = e.target.innerText;
             this.setState({isOpen: true});
-            // var str = e.target.innerHTML;
-            // str.replace("=", '');
-            // this.description = str.replace(/<[^>]+>/g, '').replace(this.title, '');
+            var titleString = e.target.innerHTML;
+            this.title = titleString.substring(0, titleString.indexOf('<'));
+            var descriptionStr = e.target.innerHTML;
+            //descriptionStr = descriptionStr.substring(0, descriptionStr.indexOf('<p>' + 1));
+            descriptionStr = descriptionStr.replace('<br>', '');
+            descriptionStr = descriptionStr.replace('<br>', '');
+            descriptionStr = descriptionStr.replace(this.title, '');
+            this.description = descriptionStr.substring(descriptionStr.indexOf('>') + 1, descriptionStr.lastIndexOf('<'));
         }
-        
+        // var str = e.target.innerHTML;
+        // str.replace("=", '');
+        // this.definition = str.replace(/<[^>]+>/g, '');
+        // this.definition = substring(e.targt.innerHTML.indexOf('<') + 1);   
     }
+    /**
+     * Closes the popup 
+     */
     closeModal = () => {
         this.setState({isOpen: false});
     }
-
+    /**
+     * Contributes the user's data when clicked
+     */
+    contributeData = () => {
+        this.setState({dataContributedPopup: true});
+    }
+    closeContributeData = () => {
+        this.setState({dataContributedPopup: false});
+    }
     render () {
         const { classes } = this.props;
         return (
-            <div>
-                <Header />
-                <h1 className={classes.mainWords} style = {{marginTop: "15%"}}>A teleconferencing software is your best option</h1>
-                {/* <br></br> */}
-                
-                {/* {this.state.isActive ?(
-                    <div style={{textAlign: "center"}}><Button variant="contained" onClick={this.handleHide} className={classes.whyButton}>
-                        hide data
-                    </Button></div>
-                ) : (
-                    <div style={{textAlign: "center"}}><Button variant="contained" onClick={this.handleShow} className={classes.whyButton}>
-                        data
-                    </Button></div>
-                )}
-                {this.state.isActive && <ResultsTable />} */}
+            <>
+                <div>
+                    {/* Render header and best option */}
+                    <Header />
+                    <h1 className={classes.mainWords} style = {{marginTop: "15%"}}>A teleconferencing software is your best option</h1>
 
-                {/* <ResultsTable /> */}
-                <div className={classes.content_container} style={{ float: "center", width: "100%" }} onClick={this.openModal}>
-                    <DataTable/>
-                </div>
-                <div >
+                    {/* Render the datatable, and have onClick to open popups */}
+                    <div className={classes.content_container}  onClick={this.openModal}>
+                        <DataTable/>
+                    </div>
+                        
+                    {/* generates the construct def popup */}
                     <Dialog open={this.state.isOpen} onClose={this.closeModal} maxWidth='md' fullWidth={true}>
-                        <Typography margin='10%' align='center'>
-                            <h2>{this.title}</h2>
-                            <p>{this.definition}</p>
-                        </Typography>
+                        <DialogTitle margin='10%' align='center'>{this.title}</DialogTitle>
+                        <DialogContent>
+                            <DialogContentText margin='20%' align='center'>
+                                {this.description}
+                            </DialogContentText>
+                        </DialogContent>
                         <Button onClick={this.closeModal}>Close</Button>
                     </Dialog>
                 </div>
-                <br></br><br></br><br></br>
-                {/* <div style={{textAlign: "center", marginBottom: "5%"}}>
-                    <a href='/about' classname={classes.mainWords} style={{color: "black", fontSize: 20, fontFamily: "Open Sans, sans-serif"}}>
-                        more info
-                    </a>
-                    <br></br>
-                    <a href='/about' classname={classes.mainWords} style={{color: "black", fontSize: 20, fontFamily: "Open Sans, sans-serif"}}>
-                        contribute my data anonymously
-                    </a>
-                </div> */}
-                <br></br>
+
+                {/* render the "next steps" buttongroup */}
                 <div style={{textAlign: "center"}}>
                     <ButtonGroup variant="outlined" aria-label="text button group">
                         <Button href="/about">more info</Button>
-                        <Button>anonymously contribute my data</Button>
+                        <Button onClick={this.contributeData}>anonymously contribute my data</Button>
+                        {/* open popup when data is successfully contributed */}
+                        <Dialog open={this.state.dataContributedPopup} onClose={this.closeContributeData}>
+                            <DialogTitle align='center'>Success</DialogTitle>
+                            <DialogContent>
+                                <DialogContentText>
+                                    Your data has been successfully contributed. Thank you.
+                                </DialogContentText>
+                            </DialogContent>
+                            <Button onClick={this.closeContributeData}>Close</Button>
+                        </Dialog>
                     </ButtonGroup>
                 </div>
-            </div>
+          </>
         );
     }
 }
