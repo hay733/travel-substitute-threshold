@@ -8,6 +8,11 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';      
 import { Button, ButtonGroup } from '@material-ui/core';
+import Dialog from "@material-ui/core/Dialog";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
 
 /**
  * Class for rendering the entire table
@@ -21,56 +26,102 @@ class ResultsTable extends React.Component {
          * the default values for each of the results table slots
          */
         this.state = {
+            isOpen: false,
+            title: null,
+            definition: null,
             data: [
                 {
                     "Construct": "Knowledge",
+                    "Definition": "What participants know about the meeting topic",
                     "Recommendation": "Face-to-Face",
                     "Average": "Face-to-Face"
                 },
     
                 {
                     "Construct": "Mental Workload",
+                    "Definition": "The ease of mental effort that the participants need to expend to carry out the purpose of the meeting without overloading the participant",
                     "Recommendation": "Face-to-Face",
                     "Average": "Face-to-Face"
                 },
     
                 {
                     "Construct": "Usability",
+                    "Definition": "The perceived ease of use of the communication tools to the participants",
                     "Recommendation": "Face-to-Face",
                     "Average": "Face-to-Face"
                 },
     
                 {
                     "Construct": "Rapport",
+                    "Definition": "A perceived quality of interactions that evokes positive feelings and inspires cooperation and affinity",
                     "Recommendation": "Face-to-Face",
                     "Average": "Face-to-Face"
                 },
     
                 {
                     "Construct": "Trust",
+                    "Definition": "The intent to accept vulnerability based on positive expectations",
                     "Recommendation": "Face-to-Face",
                     "Average": "Face-to-Face"
                 },
     
                 {
                     "Construct": "Engagement",
+                    "Definition": "Directing one’s attention, acknowledging other participants, and demonstrating a readiness to interact with other participants, whether positively or negatively",
                     "Recommendation": "Face-to-Face",
                     "Average": "Face-to-Face"
                 },
     
                 {
                     "Construct": "Copresence",
+                    "Definition": "A perceived feeling of awareness and mutual presence between participants.",
                     "Recommendation": "Face-to-Face",
                     "Average": "Face-to-Face"
                 },
     
                 {
                     "Construct": "Shared Situational Awareness",
+                    "Definition": "The extent to which participants have a commonly understood mental model of a situation (I.e., what is currently happening and what is going to happen)",
                     "Recommendation": "Face-to-Face",
                     "Average": "Face-to-Face"
                 },
             ]
         };
+    }
+    /**
+     * Closes the popup 
+     */
+     closeModal = () => {
+        this.setState({isOpen: false});
+    }
+    /**
+     * Opens the popup for the construct
+     * @param {} e 
+     */
+    openModal = (e) => {
+        // this.title = e.target.innerHTML;
+        // console.log(this.title);
+        // If the user clicks a button, ah column heading, or a results cell, do NOT open the modal
+        if (e.target.innerText == 'LOW' || e.target.innerText == 'MEDIUM' || e.target.innerText == 'HIGH' | e.target.innerText.includes('Virtual Reality (XR)') || e.target.innerText.includes('Teleconference') || e.target.innerHTML.includes('Face-to-Face') || e.target.innerHTML=='Constructs' || e.target.innerHTML=='Degree Required' || e.target.innerHTML=='Recommendation') {
+            this.setState({isOpen: false});
+        }
+        // Otherwise, open modal and display title/definition
+        else {
+            this.setState({isOpen: true});
+            var titleString = e.target.innerHTML;
+            this.title = titleString.substring(0, titleString.indexOf('<'));
+            var definitionStr = e.target.innerHTML;
+            // //descriptionStr = descriptionStr.substring(0, descriptionStr.indexOf('<p>' + 1));
+            definitionStr = definitionStr.replace('<br>', '');
+            definitionStr = definitionStr.replace('<br>', '');
+            definitionStr = definitionStr.replace(this.title, '');
+            this.definition = definitionStr.substring(definitionStr.indexOf('>') + 1, definitionStr.lastIndexOf('<'));
+            console.log(this.definition);
+        }
+        // var str = e.target.innerHTML;
+        // str.replace("=", '');
+        // this.definition = str.replace(/<[^>]+>/g, '');
+        // this.definition = substring(e.targt.innerHTML.indexOf('<') + 1);   
     }
     
     /**
@@ -138,12 +189,13 @@ class ResultsTable extends React.Component {
         //     setAlignment(newAlignment);
         // };
         return this.state.data.map((data, index) => {
-            const { Construct, Recommendation } = data
+            const { Construct, Definition, Recommendation } = data
             return (
+                <>
                     <TableBody>
                         <TableRow>
-                            <TableCell align="middle" style={{fontFamily: "Open Sans, sans-serif", color: "#1E2124", backgroundColor: "#A2B6E7",
-                                fontWeight: 700, fontSize: 19, borderColor: "#1E2124", borderBottomWidth: "1px"}}>{Construct}</TableCell>
+                            <TableCell onClick={this.openModal} align="middle" style={{fontFamily: "Open Sans, sans-serif", color: "#1E2124", backgroundColor: "#A2B6E7",
+                                fontWeight: 700, fontSize: 19, borderColor: "#1E2124", borderBottomWidth: "1px"}}>{Construct} &#9432; <br></br><p hidden>{Definition}</p></TableCell>
                             <TableCell align="middle" style={{fontFamily: "Open Sans, sans-serif", color: "#1E2124", backgroundColor: "#A2B6E7",
                                 fontWeight: 700, fontSize: 19, borderColor: "#1E2124", borderBottomWidth: "1px"}} key = {Recommendation}>
                                 <ButtonGroup >
@@ -159,6 +211,18 @@ class ResultsTable extends React.Component {
                                 fontWeight: 700, fontSize: 19, borderColor: "#1E2124", borderBottomWidth: "1px"}}>{Recommendation}</TableCell>
                         </TableRow>
                     </TableBody>
+                    <Dialog open={this.state.isOpen} onClose={this.closeModal} maxWidth='md' fullWidth={true}>
+                        <DialogTitle margin='10%' align='center'>
+                            {this.title}
+                        </DialogTitle>
+                        <DialogContent>
+                            <DialogContentText margin='10%' align='center'>
+                                {this.definition}
+                            </DialogContentText>
+                        </DialogContent>
+                        <Button onClick={this.closeModal}>Close</Button>
+                    </Dialog>
+                    </>
             )
         }) 
     }
@@ -203,7 +267,6 @@ class ResultsTable extends React.Component {
                         </TableRow>
                     </Table>
                 </TableContainer>
-                
             </div>
          )
     }
