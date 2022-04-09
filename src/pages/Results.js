@@ -156,13 +156,14 @@ class Results extends React.Component {
                     </Dialog>
                 </div>
 
+                <br></br>
                 {/* render the "next steps" buttongroup */}
                 <div style={{textAlign: "center"}} >
                     <ButtonGroup variant="outlined" aria-label="text button group" className={classes.buttonStyles}>
                         <Button className={classes.buttonStyles} href="/about">more info</Button>
-                        <Button className={classes.buttonStyles} onClick={this.contributeData}>anonymously contribute my data</Button>
+                        {/* <Button className={classes.buttonStyles} onClick={this.contributeData}>anonymously contribute my data</Button> */}
                         {/* open popup when data is successfully contributed */}
-                        <Dialog open={this.state.dataContributedPopup} onClose={this.closeContributeData}>
+                        {/* <Dialog open={this.state.dataContributedPopup} onClose={this.closeContributeData}>
                             <DialogTitle align='center'>Success</DialogTitle>
                             <DialogContent>
                                 <DialogContentText>
@@ -170,7 +171,7 @@ class Results extends React.Component {
                                 </DialogContentText>
                             </DialogContent>
                             <Button onClick={this.closeContributeData}>Close</Button>
-                        </Dialog>
+                        </Dialog> */}
                     </ButtonGroup>
                 </div>
           </>
