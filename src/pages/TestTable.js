@@ -129,6 +129,25 @@ class ResultsTable extends React.Component {
 
     /**
      * 
+     * @param {*} rec the type of recommendation to be counted and returned
+     * @returns the number of times a certain recommendation shows up
+     */
+     CalcScores(rec) {
+        var i, vr, f2f, tel;
+        tel = vr = f2f = 0;
+        let prevState = [...this.state.data];
+        for (i = 0; i < 8; i++) {
+            if (prevState[i].Recommendation == "Teleconference" && rec == "tel") tel++;
+            else if (prevState[i].Recommendation == "Face-to-Face" && rec == "f2f") f2f++;
+            else if (prevState[i].Recommendation == "Virtual Reality" && rec == "vr") vr++;
+        }
+        if (tel >= vr && tel >= f2f && rec == "tel") return tel;
+        if (vr >= tel && vr >= f2f && rec == "vr") return vr;
+        return f2f;
+    }
+
+    /**
+     * 
      * @returns the data rows in the table, including the low/med/high button group
      */
     tableTable() {
@@ -181,6 +200,61 @@ class ResultsTable extends React.Component {
             </TableHead>
         )
     }
+    tableSpanTel() {
+        return (
+            <TableRow>
+                    {/* tel rec */}
+                    <TableCell style={{fontFamily: "Open Sans, sans-serif", fontWeight: 700, borderColor: "#1E2124",
+                        borderBottomWidth: "0px", color: "white", backgroundColor: "#2E3338",}}/>
+                    <TableCell style={{fontFamily: "Open Sans, sans-serif", fontWeight: 700, fontSize: 18, borderColor: "#1E2124",
+                        borderBottomWidth: "1px", color: "white", backgroundColor: "#2E3338",}}># of Teleconference:</TableCell>
+                    <TableCell align="middle" style={{fontFamily: "Open Sans, sans-serif", fontWeight: 700, fontSize: 22, borderColor: "#1E2124",
+                        borderBottomWidth: "1px", color: "white", backgroundColor: "#2E3338",}}>{this.CalcScores("tel")}</TableCell>
+                </TableRow>
+        )
+    }
+    tableSpanVR() {
+        return (
+            <TableRow>
+                    {/* vr rec */}
+                    <TableCell style={{fontFamily: "Open Sans, sans-serif", fontWeight: 700, fontSize: 22, borderColor: "#1E2124",
+                        borderBottomWidth: "0px", color: "white", backgroundColor: "#2E3338",}}/>
+                    <TableCell style={{fontFamily: "Open Sans, sans-serif", fontWeight: 700, fontSize: 22, borderColor: "#1E2124",
+                        borderBottomWidth: "1px", color: "white", backgroundColor: "#2E3338",}}># of VR:</TableCell>
+                    <TableCell align="middle" style={{fontFamily: "Open Sans, sans-serif", fontWeight: 700, fontSize: 22, borderColor: "#1E2124",
+                        borderBottomWidth: "1px", color: "white", backgroundColor: "#2E3338",}}>{this.CalcScores("vr")}</TableCell>
+                </TableRow>
+        )
+    }
+    tableSpanF2F() {
+        return (
+            <TableRow>
+                    {/* f2f rec */}
+                    <TableCell style={{fontFamily: "Open Sans, sans-serif", fontWeight: 700, fontSize: 22, borderColor: "#1E2124",
+                        borderBottomWidth: "0px", color: "white", backgroundColor: "#2E3338",}}/>
+                    <TableCell style={{fontFamily: "Open Sans, sans-serif", fontWeight: 700, fontSize: 22, borderColor: "#1E2124",
+                        borderBottomWidth: "1px", color: "white", backgroundColor: "#2E3338",}}># of Face-to-Face:</TableCell>
+                    <TableCell align="middle" style={{fontFamily: "Open Sans, sans-serif", fontWeight: 700, fontSize: 22, borderColor: "#1E2124",
+                        borderBottomWidth: "1px", color: "white", backgroundColor: "#2E3338",}}>{this.CalcScores("f2f")}</TableCell>
+                </TableRow>
+        )
+    }
+    tableSpanRec() {
+        return (
+        
+                
+                <TableRow>
+                    {/* we recommend */}
+                    <TableCell style={{fontFamily: "Open Sans, sans-serif", fontWeight: 700, fontSize: 22, borderColor: "#1E2124",
+                        borderBottomWidth: "1px", color: "white", backgroundColor: "#2E3338",}}/>
+                    <TableCell style={{fontFamily: "Open Sans, sans-serif", fontWeight: 700, fontSize: 22, borderColor: "#1E2124",
+                        borderBottomWidth: "1px", color: "white", backgroundColor: "#2E3338",}}>We Recommend:</TableCell>
+                    <TableCell align="middle" style={{fontFamily: "Open Sans, sans-serif", fontWeight: 700, fontSize: 22, borderColor: "#1E2124",
+                        borderBottomWidth: "1px", color: "white", backgroundColor: "#2E3338",}}>{this.CalcAv()}</TableCell>
+                </TableRow>
+          
+        )
+    }
     
     /**
      * 
@@ -193,14 +267,10 @@ class ResultsTable extends React.Component {
                     <Table id='data' aria-label="simple table">
                         {this.tableHeader()}
                         {this.tableTable()}
-                        <TableRow>
-                            <TableCell rowSpan={8} style={{fontFamily: "Open Sans, sans-serif", fontWeight: 700, fontSize: 22, borderColor: "#1E2124",
-                                borderBottomWidth: "1px", color: "white", backgroundColor: "#2E3338",}}/>
-                            <TableCell colSpan={1} style={{fontFamily: "Open Sans, sans-serif", fontWeight: 700, fontSize: 22, borderColor: "#1E2124",
-                                borderBottomWidth: "1px", color: "white", backgroundColor: "#2E3338",}}>We Recommend:</TableCell>
-                            <TableCell align="middle" style={{fontFamily: "Open Sans, sans-serif", fontWeight: 700, fontSize: 22, borderColor: "#1E2124",
-                                borderBottomWidth: "1px", color: "white", backgroundColor: "#2E3338",}}>{this.CalcAv()}</TableCell>
-                        </TableRow>
+                        {this.tableSpanTel()}
+                        {this.tableSpanVR()}
+                        {this.tableSpanF2F()}
+                        {this.tableSpanRec()}
                     </Table>
                 </TableContainer>
                 
