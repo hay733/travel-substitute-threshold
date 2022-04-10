@@ -13,6 +13,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
+import { Route } from 'react-router-dom'
 
 /**
  * Class for rendering the entire table
@@ -218,6 +219,8 @@ class ResultsTable extends React.Component {
                         <DialogContent>
                             <DialogContentText margin='10%' align='center'>
                                 {this.definition}
+                                <br></br>
+                                <p>Full Construct Description</p>
                             </DialogContentText>
                         </DialogContent>
                         <Button onClick={this.closeModal}>Close</Button>
