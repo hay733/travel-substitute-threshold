@@ -62,7 +62,7 @@ class QuestionsEngagementCopresenceSSA extends React.Component {
     };
     //opens the popup
     openModal = (e) => {
-        console.log(e);
+        console.log("Open");
         // this.title = e.target.innerText;
         this.setState({isOpen: true});
         // var str = e.target.innerHTML;
@@ -84,7 +84,7 @@ class QuestionsEngagementCopresenceSSA extends React.Component {
                     <br></br><br></br>
                     <Stepper activeStep={3} nonLinear alternativeLabel className={classes.stepper}>
                         <Step>
-                            <StepButton href='/questions-knowledge_mentalWorkload'>knowledge & mental workload</StepButton>
+                            <StepButton href='/questions-knowledge_mentalWorkload' onClick={this.openModal}>knowledge & mental workload</StepButton>
                         </Step>
                         <Step>
                             <StepButton href='/questions-usability'>usability</StepButton>
