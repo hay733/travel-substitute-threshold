@@ -2,7 +2,6 @@ import Quiz from './pages/Quiz'
 import About from './pages/About'
 import Home from './pages/Home'
 import Results from './pages/Results'
-import Questions from './pages/question pages/QuestionsKnowMental'
 
 import { Route } from 'react-router-dom'
 

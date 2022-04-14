@@ -1,33 +1,32 @@
 import Header from './Header'
 import DataTable from './Table'
 
-import { makeStyles, withStyles, Button } from "@material-ui/core"
+import { withStyles, Button } from "@material-ui/core"
 import React from 'react'
-import QuestionBoxes from './QuestionBoxes';
 import { ButtonGroup } from '@mui/material';
 import Dialog from "@material-ui/core/Dialog";
 import Typography from "@material-ui/core/Typography";
 
-const useStyles = makeStyles(() => ({
-    container: {
-        // backgroundColor: "#545F66", // for testing/sizing
-        marginLeft: 5,
-        width: "99%",
-        height: 570,
-        display: "inline-block",
-        marginTop: 100,
-    },
-    content_container: {
-        // backgroundColor: "green",  // for testing/sizing
-        // flex: "auto",
-        margin: 1,
-        // width: "49.8%",
-        height: "99.8%",
-        // display: "inline-block",
-        // marginTop: 100,
-        scrollbarColor: "blue",
-    },
-}));
+// const useStyles = makeStyles(() => ({
+//     container: {
+//         // backgroundColor: "#545F66", // for testing/sizing
+//         marginLeft: 5,
+//         width: "99%",
+//         height: 570,
+//         display: "inline-block",
+//         marginTop: 100,
+//     },
+//     content_container: {
+//         // backgroundColor: "green",  // for testing/sizing
+//         // flex: "auto",
+//         margin: 1,
+//         // width: "49.8%",
+//         height: "99.8%",
+//         // display: "inline-block",
+//         // marginTop: 100,
+//         scrollbarColor: "blue",
+//     },
+// }));
 
 const styles = theme => ({
     whyButton: {

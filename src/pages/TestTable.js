@@ -35,37 +35,31 @@ class ResultsTable extends React.Component {
                 },
     
                 {
-                    "Construct": "Usability",
+                    "Construct": "Usability: Ease of Use",
                     "Recommendation": "Face-to-Face",
                     "Average": "Face-to-Face"
                 },
     
                 {
-                    "Construct": "Rapport",
-                    "Recommendation": "Face-to-Face",
-                    "Average": "Face-to-Face"
-                },
-    
-                {
-                    "Construct": "Trust",
-                    "Recommendation": "Face-to-Face",
-                    "Average": "Face-to-Face"
-                },
-    
-                {
-                    "Construct": "Engagement",
-                    "Recommendation": "Face-to-Face",
-                    "Average": "Face-to-Face"
-                },
-    
-                {
-                    "Construct": "Copresence",
+                    "Construct": "Usability: Task Experience",
                     "Recommendation": "Face-to-Face",
                     "Average": "Face-to-Face"
                 },
     
                 {
                     "Construct": "Shared Situational Awareness",
+                    "Recommendation": "Face-to-Face",
+                    "Average": "Face-to-Face"
+                },
+
+                {
+                    "Construct": "Immediate Performance",
+                    "Recommendation": "Face-to-Face",
+                    "Average": "Face-to-Face"
+                },
+
+                {
+                    "Construct": "Future Performance",
                     "Recommendation": "Face-to-Face",
                     "Average": "Face-to-Face"
                 },
@@ -117,7 +111,7 @@ class ResultsTable extends React.Component {
         var i, vr, f2f, tel;
         tel = vr = f2f = 0;
         let prevState = [...this.state.data];
-        for (i = 0; i < 8; i++) {
+        for (i = 0; i < 7; i++) {
             if (prevState[i].Recommendation == "Teleconference") tel++;
             if (prevState[i].Recommendation == "Face-to-Face") f2f++;
             if (prevState[i].Recommendation == "Virtual Reality") vr++;
@@ -136,7 +130,7 @@ class ResultsTable extends React.Component {
         var i, vr, f2f, tel;
         tel = vr = f2f = 0;
         let prevState = [...this.state.data];
-        for (i = 0; i < 8; i++) {
+        for (i = 0; i < 7; i++) {
             if (prevState[i].Recommendation == "Teleconference" && rec == "tel") tel++;
             else if (prevState[i].Recommendation == "Face-to-Face" && rec == "f2f") f2f++;
             else if (prevState[i].Recommendation == "Virtual Reality" && rec == "vr") vr++;
@@ -208,7 +202,7 @@ class ResultsTable extends React.Component {
                         borderBottomWidth: "0px", color: "white", backgroundColor: "#2E3338",}}/>
                     <TableCell style={{fontFamily: "Open Sans, sans-serif", fontWeight: 700, fontSize: 18, borderColor: "#1E2124",
                         borderBottomWidth: "1px", color: "white", backgroundColor: "#2E3338",}}># of Teleconference:</TableCell>
-                    <TableCell align="middle" style={{fontFamily: "Open Sans, sans-serif", fontWeight: 700, fontSize: 22, borderColor: "#1E2124",
+                    <TableCell align="middle" style={{fontFamily: "Open Sans, sans-serif", fontWeight: 700, fontSize: 18, borderColor: "#1E2124",
                         borderBottomWidth: "1px", color: "white", backgroundColor: "#2E3338",}}>{this.CalcScores("tel")}</TableCell>
                 </TableRow>
         )
@@ -219,9 +213,9 @@ class ResultsTable extends React.Component {
                     {/* vr rec */}
                     <TableCell style={{fontFamily: "Open Sans, sans-serif", fontWeight: 700, fontSize: 22, borderColor: "#1E2124",
                         borderBottomWidth: "0px", color: "white", backgroundColor: "#2E3338",}}/>
-                    <TableCell style={{fontFamily: "Open Sans, sans-serif", fontWeight: 700, fontSize: 22, borderColor: "#1E2124",
+                    <TableCell style={{fontFamily: "Open Sans, sans-serif", fontWeight: 700, fontSize: 18, borderColor: "#1E2124",
                         borderBottomWidth: "1px", color: "white", backgroundColor: "#2E3338",}}># of VR:</TableCell>
-                    <TableCell align="middle" style={{fontFamily: "Open Sans, sans-serif", fontWeight: 700, fontSize: 22, borderColor: "#1E2124",
+                    <TableCell align="middle" style={{fontFamily: "Open Sans, sans-serif", fontWeight: 700, fontSize: 18, borderColor: "#1E2124",
                         borderBottomWidth: "1px", color: "white", backgroundColor: "#2E3338",}}>{this.CalcScores("vr")}</TableCell>
                 </TableRow>
         )
@@ -230,11 +224,11 @@ class ResultsTable extends React.Component {
         return (
             <TableRow>
                     {/* f2f rec */}
-                    <TableCell style={{fontFamily: "Open Sans, sans-serif", fontWeight: 700, fontSize: 22, borderColor: "#1E2124",
+                    <TableCell style={{fontFamily: "Open Sans, sans-serif", fontWeight: 700, fontSize: 18, borderColor: "#1E2124",
                         borderBottomWidth: "0px", color: "white", backgroundColor: "#2E3338",}}/>
-                    <TableCell style={{fontFamily: "Open Sans, sans-serif", fontWeight: 700, fontSize: 22, borderColor: "#1E2124",
+                    <TableCell style={{fontFamily: "Open Sans, sans-serif", fontWeight: 700, fontSize: 18, borderColor: "#1E2124",
                         borderBottomWidth: "1px", color: "white", backgroundColor: "#2E3338",}}># of Face-to-Face:</TableCell>
-                    <TableCell align="middle" style={{fontFamily: "Open Sans, sans-serif", fontWeight: 700, fontSize: 22, borderColor: "#1E2124",
+                    <TableCell align="middle" style={{fontFamily: "Open Sans, sans-serif", fontWeight: 700, fontSize: 18, borderColor: "#1E2124",
                         borderBottomWidth: "1px", color: "white", backgroundColor: "#2E3338",}}>{this.CalcScores("f2f")}</TableCell>
                 </TableRow>
         )
