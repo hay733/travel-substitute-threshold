@@ -20,7 +20,7 @@ function Descriptions() {
             <p>An ideal mental workload would balance the intensity and duration of the effort to successfully complete the task at hand (ISIO, 1991; Pretoriius and Cillers, 2007; Young et al., 2015). The worker should be exerted to their full potential without exceeding their capabilities. If the worker’s capabilities are stretched too thin, their efficiency of completing the task can go down. However, if the worker is underloaded, or not stimulated enough, their completion of the task is at risk of being suboptimal (Young and Stanton, 2002; Wilson and Rajjan, 1995; Young et al., 2015). Mental Workload can be increased or decreased by adding or subtracting additional resources.</p>
             <br></br>
             <h3>Usability</h3> 
-            <p>We utilize (SUS/modified SUS our own quesionaires) in our experiment to desicn and collect empirical data regarding usability</p>
+            <p>We utilize (SUS/modified SUS our own quesionaires) in our experiment to desicn and collect empirical data regarding usability.</p>
             <br></br>
             <h3>Engagement</h3>
             <p>The concept of engagement has been associated with behaviors that are in line with a person’s motivation to perform a task (Cannell, Miller, and Oksenberg, 1981; Reeve, Jang, Carrell, Jeon, and Barch, 2004; Skinner and Belmont, 1993). Within interpersonal interaction, engagement has been conceptualized as the process by which people start, maintain, and end their perceived connection to one another (Sidner, Lee, Kidd, Lesh, and Rich, 2005), and may be indicated by behaviors that reflect positive or negative evaluations of an interaction partner (Tickle-Degnen and Rosenthal, 1990). Two fundamental components of engagement are thus attentional involvement (e.g., to a stimulus or interaction partner) and emotional involvement (that is afforded by sustained attention; Peters, Castellano, and de Freitas, 2009). An important component to engagement is a feeling of connection between two people (i.e., copresence; Nowak and Biocca, 2003), regardless of whether communication is occurring face-to-face or via computer-mediated platforms. For the purposes of the current paper, engagement is defined as directing one’s attention, acknowledging other participants, and demonstrating a readiness to interact with other participants, whether positively or negatively. Note that with this definition, there can be a feeling of presence or a lack of engagement whether in FtF or CMC.</p>
@@ -52,6 +52,7 @@ function Descriptions() {
             <a href='https://doi.org/10.1186/s41155-017-0061-0'>https://doi.org/10.1186/s41155-017-0061-0</a>
             <br></br>
             <h3>Usability</h3>
+            <br></br>
             <h3>Engagement</h3>
             <br></br>
             <h3>Rapport</h3>
